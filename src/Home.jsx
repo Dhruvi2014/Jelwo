@@ -19,12 +19,49 @@ import products from "./products";
 import p1 from "./assets/p1.webp";
 import p2 from "./assets/p2.webp";
 import p3 from "./assets/p3.webp";
+import CartDrawer from "./CartDrawer";
+
 
 function Home({ wishlist = [], toggleWishlist, openWishlist }) {
     const [quickViewProduct, setQuickViewProduct] = useState(null);
     const [selectedColor, setSelectedColor] = useState("gold");
     const [qty, setQty] = useState(1);
     const [activeImage, setActiveImage] = useState(0);
+
+    const [cart, setCart] = useState([]);
+    const [openCart, setOpenCart] = useState(false);
+
+    const addToCart = (product, color = "Gold", qty = 1) => {
+        setCart((prev) => {
+            const exist = prev.find(
+                (item) => item.id === product.id && item.color === color
+            );
+
+            if (exist) {
+                return prev.map((item) =>
+                    item.id === product.id && item.color === color
+                        ? { ...item, qty: item.qty + qty }
+                        : item
+                );
+            }
+
+            return [...prev, { ...product, qty, color }];
+        });
+
+        setOpenCart(true); // 🔥 OPEN DRAWER
+    };
+
+    const updateQty = (id, qty) => {
+        setCart((prev) =>
+            prev.map((item) =>
+                item.id === id ? { ...item, qty: Math.max(1, qty) } : item
+            )
+        );
+    };
+
+    const removeItem = (id) => {
+        setCart((prev) => prev.filter((item) => item.id !== id));
+    };
 
     const [timeLeft, setTimeLeft] = useState({
         days: 1,
@@ -103,7 +140,11 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                             </i>
                         </div>
 
-                        <i className="fa-solid fa-bag-shopping"></i>
+                        <i
+                            className="fa-solid fa-bag-shopping"
+                            onClick={() => setOpenCart(true)}
+                            style={{ cursor: "pointer" }}
+                        ></i>
                     </div>
                 </div>
             </div>
@@ -466,7 +507,12 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                             </div>
                                         </div>
 
-                                        <button className="add-cart">ADD TO CART</button>
+                                        <button
+                                            className="add-cart"
+                                            onClick={() => addToCart(p, "Gold", 1)}
+                                        >
+                                            ADD TO CART
+                                        </button>
                                     </div>
 
 
@@ -579,7 +625,14 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                 </div>
 
                                 <div className="action-btns">
-                                    <button className="add-cart">ADD TO CART</button>
+                                    <button
+                                        className="add-cart"
+                                        onClick={() =>
+                                            addToCart(quickViewProduct, selectedColor, qty)
+                                        }
+                                    >
+                                        ADD TO CART
+                                    </button>
                                     <button className="buy-now">BUY IT NOW</button>
                                 </div>
 
@@ -590,6 +643,13 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                 </div>
             )}
 
+            <CartDrawer
+                open={openCart}
+                onClose={() => setOpenCart(false)}
+                cart={cart}
+                updateQty={updateQty}
+                removeItem={removeItem}
+            />
 
         </>
     );
