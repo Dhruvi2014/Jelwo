@@ -2,7 +2,7 @@ import React from "react";
 
 function CartDrawer({ open, onClose, cart, updateQty, removeItem }) {
     const FREE_SHIPPING_LIMIT = 200;
-
+    
     const subtotal = cart.reduce(
         (sum, item) => sum + item.price * item.qty,
         0
