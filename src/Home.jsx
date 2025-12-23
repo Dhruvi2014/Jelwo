@@ -22,6 +22,8 @@ import banner4 from "./assets/banner4.webp";
 import p1 from "./assets/p1.webp";
 import p2 from "./assets/p2.webp";
 import p3 from "./assets/p3.webp";
+import p4 from "./assets/p4.webp";
+
 import CartDrawer from "./CartDrawer";
 import kristen from "./assets/kristen.avif";
 import smith from "./assets/smith.webp";
@@ -544,9 +546,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                                 </button>
                                             </div>
 
-
-
-
                                         </div>
                                     </div>
                                 );
@@ -590,7 +589,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                                 ‹
                                             </button>
 
-                                            {/* RIGHT ARROW */}
                                             <button
                                                 className="nav right"
                                                 onClick={() =>
@@ -618,7 +616,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                         </div>
                                     </div>
 
-                                    {/* RIGHT SIDE */}
                                     <div className="col-md-6">
 
                                         <h3>{quickViewProduct.name}</h3>
@@ -674,7 +671,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                         </div>
                     )}
 
-                    {/* VIEW COLLECTION BUTTON */}
                     <div className="container text-center my-5">
                         <button className="view-collection-btn">VIEW COLLECTION</button>
                     </div>
@@ -687,15 +683,17 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                     className="collection-banner left-banner"
                                     style={{ backgroundImage: `url(${banner3})` }}
                                 >
-                                    <div className="banner-overlay">
-                                        <h2>Unleash your<br />inner shine</h2>
-                                        <p>
-                                            It is a long established fact that a reader will be distracted
-                                            by the readable content of a page when looking at its layout.
-                                        </p>
-                                        <button className="shop-now-btn">SHOP NOW</button>
+                                    <div className="banner-content-wrap">
+                                        <div className="banner-text">
+                                            <h2>Unleash your<br />inner shine</h2>
+                                            <p>It is a long established fact that a reader will<br></br>
+                                            be distracted by the readable content of a<br></br>
+                                            page when looking at its layout.</p>
+                                            <button className="shop-now-btn">SHOP NOW</button>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
 
                             <div className="col-md-5">
@@ -711,6 +709,83 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
 
                         </div>
                     </div>
+
+                    <div className="container my-5">
+                        <h2 className="text-center mb-4">Trending Products</h2>
+
+                        <div className="row">
+                            {products.map((p) => {
+                                const isWishlisted = wishlist.some(
+                                    (item) => item.id === p.id
+                                );
+
+                                return (
+                                    <div className="col-md-3" key={p.id}>
+                                        <div className="product-card">
+                                            <span className="discount">{p.discount}%</span>
+
+                                            <div className="img-wrap">
+                                                <img src={p.image[0]} alt={p.name} />
+
+                                                <div className="image-overlay">
+                                                    <button onClick={() => toggleWishlist(p)}>
+                                                        <i className="fa-regular fa-heart"></i>
+                                                    </button>
+                                                    <button
+                                                        onClick={() => {
+                                                            setQuickViewProduct(p);
+                                                            setActiveImage(0);
+                                                            setQty(1);   
+                                                        }}
+
+                                                    >
+                                                        <i className="fa-regular fa-eye"></i>
+                                                    </button>
+
+                                                </div>
+                                            </div>
+
+                                            <div className="product-info">
+                                                <div className="deal-timer">JEWELRY</div>
+                                                <h6>{p.name}</h6>
+                                                <p>Rs. {p.price} <del>Rs. {p.oldPrice}</del></p>
+                                            </div>
+                                            <div className="hover-info">
+
+                                                <div className="option-row">
+                                                    <select className="color-select">
+                                                        <option>Gold</option>
+                                                        <option>Brown</option>
+                                                        <option>Silver</option>
+                                                    </select>
+
+                                                    <div className="qty">
+                                                        <button>-</button>
+                                                        <span>1</span>
+                                                        <button>+</button>
+                                                    </div>
+                                                </div>
+
+                                                <button
+                                                    className="add-cart"
+                                                    onClick={() => addToCart(p, "Gold", 1)}
+                                                >
+                                                    ADD TO CART
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+
+                    <div className="container text-center my-5">
+                        <button className="view-collection-btn">VIEW COLLECTION</button>
+                    </div>
+
+                    <hr></hr>
 
 
                     <section className="testimonial-section py-5">

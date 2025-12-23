@@ -1,7 +1,3 @@
-
-
-
-
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
@@ -13,8 +9,8 @@ body {
   padding: 10px 0;
 }
 
-.logo img{
-    height: 20px;
+.logo img {
+  height: 20px;
 }
 
 .top-text {
@@ -223,9 +219,17 @@ body {
 }
 
 @keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .banner-card {
@@ -356,6 +360,7 @@ body {
   border-bottom: 1px solid #000;
   display: inline-block;
 }
+
 .features-bar {
   border: 1px solid #eee;
   padding: 35px 25px;
@@ -368,7 +373,7 @@ body {
 
 .feature-icon {
   font-size: 34px;
-  color: #a7866a; 
+  color: #a7866a;
 }
 
 .feature-item h6 {
@@ -667,7 +672,7 @@ body {
   border-radius: 6px;
   width: 46px;
   padding: 6px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   text-align: center;
 }
 
@@ -795,7 +800,7 @@ body {
 .quickview-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 9999;
   display: flex;
   justify-content: center;
@@ -927,7 +932,7 @@ body {
   height: 42px;
   border-radius: 50%;
   border: none;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
   color: white;
 }
 
@@ -952,6 +957,7 @@ body {
 .product-card:hover .hover-info {
   display: block;
 }
+
 .hover-info {
   display: none;
   padding: 14px;
@@ -973,21 +979,22 @@ body {
 }
 
 .color-select {
-  height: 34px;          
-  padding: 4px 8px;      
+  height: 34px;
+  padding: 4px 8px;
   font-size: 14px;
   border: 1px solid #ddd;
   background: #fff;
   top: 1px;
   width: 160px;
 }
+
 .option-row {
   display: flex;
-  align-items: center;   
+  align-items: center;
 }
 
 .qty {
-  height: 34px;          
+  height: 34px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -1017,7 +1024,7 @@ body {
 .quickview-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 999;
 }
 
@@ -1068,8 +1075,13 @@ body {
   font-size: 18px;
 }
 
-.quickview-image .left { left: 10px; }
-.quickview-image .right { right: 10px; }
+.quickview-image .left {
+  left: 10px;
+}
+
+.quickview-image .right {
+  right: 10px;
+}
 
 /* THUMBS */
 .thumbs {
@@ -1139,9 +1151,17 @@ body {
   border-color: #000;
 }
 
-.gold { background: gold; }
-.brown { background: brown; }
-.silver { background: silver; }
+.gold {
+  background: gold;
+}
+
+.brown {
+  background: brown;
+}
+
+.silver {
+  background: silver;
+}
 
 .qty-box {
   display: inline-flex;
@@ -1178,10 +1198,11 @@ body {
   color: #fff;
   border: none;
 }
+
 .quickview-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 999;
 }
 
@@ -1212,8 +1233,13 @@ body {
   cursor: pointer;
 }
 
-.quickview-image .left { left: 10px; }
-.quickview-image .right { right: 10px; }
+.quickview-image .left {
+  left: 10px;
+}
+
+.quickview-image .right {
+  right: 10px;
+}
 
 .thumbs {
   display: flex;
@@ -1247,9 +1273,18 @@ body {
   cursor: pointer;
 }
 
-.gold { background: gold; }
-.brown { background: brown; }
-.silver { background: silver; }
+.gold {
+  background: gold;
+}
+
+.brown {
+  background: brown;
+}
+
+.silver {
+  background: silver;
+}
+
 .cart-drawer {
   position: fixed;
   top: 0;
@@ -1546,6 +1581,7 @@ body {
   border: 1px solid #ddd;
   resize: none;
 }
+
 /* keep width same as cart */
 .cart-extra {
   max-width: 520px;
@@ -1583,41 +1619,43 @@ body {
 .instruction-box {
   margin-top: 24px;
 }
+
 .testimonial-section {
   background-color: #fff;
 }
+
 .testimonial-card {
   border: 1px solid #eee;
   border-radius: 10px;
   position: relative;
   background-color: #fff;
-  padding: 2rem; 
+  padding: 2rem;
 }
 
 .star-rating {
-  font-size: 1.3rem; 
-  color: #f4c150; 
+  font-size: 1.3rem;
+  color: #f4c150;
 }
 
 .reviews-text {
-  font-size: 1.1rem; 
+  font-size: 1.1rem;
   color: #555;
   margin-left: 8px;
 }
 
 .testimonial-text {
-  font-size: 1.1rem; 
+  font-size: 1.1rem;
   color: #555;
   line-height: 1.6;
 }
 
 .testimonial-footer {
   position: relative;
-  margin-top: 1.5rem; 
+  margin-top: 1.5rem;
 }
 
 .testimonial-img {
-  width: 70px; 
+  width: 70px;
   height: 70px;
   border-radius: 50%;
   object-fit: cover;
@@ -1625,17 +1663,17 @@ body {
 
 .testimonial-name {
   font-weight: 600;
-  font-size: 1.1rem; 
+  font-size: 1.1rem;
   color: #9b7b67;
 }
 
 .testimonial-role {
   color: #888;
-  font-size: 0.95rem; 
+  font-size: 0.95rem;
 }
 
 .quote {
-  font-size: 2.5rem; 
+  font-size: 2.5rem;
   color: #9b7b67;
 }
 
@@ -1663,38 +1701,50 @@ body {
   overflow: hidden;
 }
 
-.left-banner .banner-overlay {
-  position: absolute;
-  inset: 0;
-  /* background: rgba(255, 248, 240, 0.92); */
-  padding: 60px;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;        
-  text-align: right;            
+/* LEFT BANNER BASE */
+.left-banner {
+  position: relative;
+  background-size: cover;
+  background-position: left center;
 }
 
-.left-banner h2 {
+/* CONTENT WRAPPER (RIGHT SIDE ONLY) */
+.banner-content-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: flex-end;
+  /* push to right */
+  align-items: center;
+  padding: 60px;
+}
+
+/* TEXT BOX (FIXED WIDTH) */
+.banner-text {
+  max-width: 420px;
+  /* 🔥 prevents overlap */
+  text-align: right;
+}
+
+/* TEXT STYLES */
+.banner-text h2 {
   font-size: 42px;
   font-weight: 500;
   margin-bottom: 20px;
-  max-width: 420px;
 }
 
-.left-banner p {
+.banner-text p {
   color: #666;
-  max-width: 420px;
   margin-bottom: 30px;
-  text-align: justify;
+  line-height: 1.6;
 }
 
+/* BUTTON */
 .shop-now-btn {
   background: #b08b6a;
   color: #fff;
   border: none;
-  padding: 12px 32px;
+  padding: 12px 34px;
   border-radius: 30px;
   font-weight: 600;
 }
