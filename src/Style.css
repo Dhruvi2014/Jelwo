@@ -1253,7 +1253,7 @@ body {
 .cart-drawer {
   position: fixed;
   top: 0;
-  right: -420px;
+  right: -550px;
   width: 520px;
   height: 100%;
   background: #fff;
