@@ -48,7 +48,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
             return [...prev, { ...product, qty, color }];
         });
 
-        setOpenCart(true); // 🔥 OPEN DRAWER
+        setOpenCart(true); 
     };
 
     const updateQty = (id, qty) => {
@@ -655,3 +655,5 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
     );
 }
 export default Home;
+
+ 
