@@ -1701,32 +1701,26 @@ body {
   overflow: hidden;
 }
 
-/* LEFT BANNER BASE */
 .left-banner {
   position: relative;
   background-size: cover;
   background-position: left center;
 }
 
-/* CONTENT WRAPPER (RIGHT SIDE ONLY) */
 .banner-content-wrap {
   position: absolute;
   inset: 0;
   display: flex;
   justify-content: flex-end;
-  /* push to right */
   align-items: center;
   padding: 60px;
 }
 
-/* TEXT BOX (FIXED WIDTH) */
 .banner-text {
   max-width: 420px;
-  /* 🔥 prevents overlap */
   text-align: right;
 }
 
-/* TEXT STYLES */
 .banner-text h2 {
   font-size: 42px;
   font-weight: 500;
@@ -1785,3 +1779,4 @@ body {
     padding: 30px;
   }
 }
+
