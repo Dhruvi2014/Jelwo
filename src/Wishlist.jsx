@@ -81,6 +81,7 @@ function Wishlist({ wishlist, goHome }) {
             <span
               className="breadcrumb-link"
               onClick={goHome}
+              
             >
               HOME
             </span>{" "}
