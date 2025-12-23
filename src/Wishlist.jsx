@@ -90,7 +90,6 @@ function Wishlist({ wishlist, goHome }) {
         </div>
       </section>
 
-      {/* WISHLIST PRODUCTS */}
       <div className="container my-5">
         {wishlist.length === 0 ? (
           <p className="text-center">Your wishlist is empty</p>
@@ -137,7 +136,6 @@ function Wishlist({ wishlist, goHome }) {
         <div className="container">
           <div className="row gy-4">
 
-            {/* LEFT */}
             <div className="col-md-3">
               <h4 className="footer-logo">JELWO</h4>
               <p>
@@ -155,7 +153,6 @@ function Wishlist({ wishlist, goHome }) {
               </p>
             </div>
 
-            {/* INFORMATION */}
             <div className="col-md-2">
               <h5>Information</h5>
               <ul>

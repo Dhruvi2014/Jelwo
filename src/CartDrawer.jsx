@@ -1,6 +1,7 @@
 import React from "react";
 
-function CartDrawer({ open, onClose, cart, updateQty, removeItem }) {
+function CartDrawer({ open, onClose, cart, updateQty, removeItem, setShowCartPage
+ }) {
     const FREE_SHIPPING_LIMIT = 200;
 
     const subtotal = cart.reduce(
@@ -14,7 +15,6 @@ function CartDrawer({ open, onClose, cart, updateQty, removeItem }) {
     return (
         <div className={`cart-drawer ${open ? "open" : ""}`}>
 
-            {/* PROGRESS */}
             <div className="cart-progress-wrapper">
                 {remaining > 0 ? (
                     <p>
@@ -39,13 +39,11 @@ function CartDrawer({ open, onClose, cart, updateQty, removeItem }) {
 
             </div>
 
-            {/* HEADER */}
             <div className="cart-header">
                 <h4>My shopping cart</h4>
                 <span onClick={onClose}>✕</span>
             </div>
 
-            {/* BODY */}
             {cart.length === 0 ? (
                 <div className="empty-cart-box">
                     <i className="fa-solid fa-bag-shopping"></i>
@@ -54,7 +52,6 @@ function CartDrawer({ open, onClose, cart, updateQty, removeItem }) {
                 </div>
             ) : (
                 <>
-                    {/* SCROLLABLE ITEMS */}
                     <div className="cart-items-wrapper">
                         {cart.map((item) => (
                             <div className="cart-item" key={item.id}>
@@ -89,7 +86,6 @@ function CartDrawer({ open, onClose, cart, updateQty, removeItem }) {
                         ))}
                     </div>
 
-                    {/* FIXED FOOTER */}
                     <div className="cart-footer">
                         <div className="cart-subtotal">
                             <span>Subtotal</span>
@@ -97,7 +93,16 @@ function CartDrawer({ open, onClose, cart, updateQty, removeItem }) {
                         </div>
 
                         <div className="cart-actions">
-                            <button className="view-cart-btn">VIEW CART</button>
+                            <button
+                                className="view-cart-btn"
+                                onClick={() => {
+                                    onClose();
+                                    setShowCartPage(true);
+                                }}
+
+                            >
+                                VIEW CART
+                            </button>
                             <button className="checkout-btn">CHECKOUT</button>
                         </div>
                     </div>

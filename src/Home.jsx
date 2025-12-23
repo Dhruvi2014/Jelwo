@@ -1,6 +1,7 @@
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "@fortawesome/fontawesome-free/css/all.min.css";
 import React, { useEffect, useState } from "react";
+import CartPage from "./CartPage";
 
 import "./Style.css";
 import Logo from "./assets/logo.png";
@@ -30,6 +31,30 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
 
     const [cart, setCart] = useState([]);
     const [openCart, setOpenCart] = useState(false);
+    const [showCartPage, setShowCartPage] = useState(false);
+
+     const updateQty = (id, qty) => {
+        setCart((prev) =>
+            prev.map((item) =>
+                item.id === id ? { ...item, qty: Math.max(1, qty) } : item
+            )
+        );
+    };
+
+    const removeItem = (id) => {
+        setCart((prev) => prev.filter((item) => item.id !== id));
+    };
+
+    // if (showCartPage) {
+    //     return (
+    //         <CartPage
+    //             cart={cart}
+    //             updateQty={updateQty}
+    //             removeItem={removeItem}
+    //             onBack={() => setShowCartPage(false)}
+    //         />
+    //     );
+    // }
 
     const addToCart = (product, color = "Gold", qty = 1) => {
         setCart((prev) => {
@@ -51,18 +76,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
         setOpenCart(true);
     };
 
-    const updateQty = (id, qty) => {
-        setCart((prev) =>
-            prev.map((item) =>
-                item.id === id ? { ...item, qty: Math.max(1, qty) } : item
-            )
-        );
-    };
-
-    const removeItem = (id) => {
-        setCart((prev) => prev.filter((item) => item.id !== id));
-    };
-
+   
     const [timeLeft, setTimeLeft] = useState({
         days: 1,
         hours: 16,
@@ -113,6 +127,15 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
 
     return (
         <>
+           {showCartPage ? (
+            <CartPage
+                cart={cart}
+                updateQty={updateQty}
+                removeItem={removeItem}
+                onBack={() => setShowCartPage(false)}
+            />
+        ) : (
+            <>
             <div className="top-bar">
                 <div className="container d-flex justify-content-between align-items-center">
                     <div className="logo">
@@ -647,16 +670,19 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                 </div>
             )}
 
-            <CartDrawer
-                open={openCart}
-                onClose={() => setOpenCart(false)}
-                cart={cart}
-                updateQty={updateQty}
-                removeItem={removeItem}
+             <CartDrawer
+                    open={openCart}
+                    onClose={() => setOpenCart(false)}
+                    cart={cart}
+                    updateQty={updateQty}
+                    removeItem={removeItem}
+                    setShowCartPage={setShowCartPage}
             />
-
         </>
+        )}
+    </>
     );
+
 }
 export default Home;
 
