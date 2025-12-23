@@ -48,7 +48,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
             return [...prev, { ...product, qty, color }];
         });
 
-        setOpenCart(true); 
+        setOpenCart(true);
     };
 
     const updateQty = (id, qty) => {
@@ -478,7 +478,9 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                                 onClick={() => {
                                                     setQuickViewProduct(p);
                                                     setActiveImage(0);
+                                                    setQty(1);   // 🔥 RESET QTY
                                                 }}
+
                                             >
                                                 <i className="fa-regular fa-eye"></i>
                                             </button>
@@ -619,10 +621,11 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                 </div>
 
                                 <div className="qty-box">
-                                    <button>-</button>
-                                    <span>1</span>
-                                    <button>+</button>
+                                    <button onClick={() => setQty(q => Math.max(1, q - 1))}>-</button>
+                                    <span>{qty}</span>
+                                    <button onClick={() => setQty(q => q + 1)}>+</button>
                                 </div>
+
 
                                 <div className="action-btns">
                                     <button
@@ -630,6 +633,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                         onClick={() =>
                                             addToCart(quickViewProduct, selectedColor, qty)
                                         }
+
                                     >
                                         ADD TO CART
                                     </button>
@@ -656,4 +660,3 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
 }
 export default Home;
 
- 

@@ -2,22 +2,19 @@ import React from "react";
 
 function CartDrawer({ open, onClose, cart, updateQty, removeItem }) {
     const FREE_SHIPPING_LIMIT = 200;
-    
+
     const subtotal = cart.reduce(
         (sum, item) => sum + item.price * item.qty,
         0
     );
 
     const remaining = Math.max(FREE_SHIPPING_LIMIT - subtotal, 0);
-
-    const progressPercent = Math.min(
-        (subtotal / FREE_SHIPPING_LIMIT) * 100,
-        100
-    );
-
+    const progressPercent = Math.min((subtotal / FREE_SHIPPING_LIMIT) * 100, 100);
 
     return (
         <div className={`cart-drawer ${open ? "open" : ""}`}>
+
+            {/* PROGRESS */}
             <div className="cart-progress-wrapper">
                 {remaining > 0 ? (
                     <p>
@@ -25,9 +22,7 @@ function CartDrawer({ open, onClose, cart, updateQty, removeItem }) {
                         shipping!
                     </p>
                 ) : (
-                    <p className="free-ship-success">
-                        🎉 You got free shipping!
-                    </p>
+                    <p className="free-ship-success">🎉 You got free shipping!</p>
                 )}
 
                 <div className="progress-bar">
@@ -35,55 +30,76 @@ function CartDrawer({ open, onClose, cart, updateQty, removeItem }) {
                         className="progress-fill"
                         style={{ width: `${progressPercent}%` }}
                     ></span>
+
+                    <i
+                        className="fa-solid fa-truck progress-truck"
+                        style={{ left: `calc(${progressPercent}% - 10px)` }}
+                    ></i>
                 </div>
+
             </div>
 
-
+            {/* HEADER */}
             <div className="cart-header">
                 <h4>My shopping cart</h4>
                 <span onClick={onClose}>✕</span>
             </div>
 
-            <div className="cart-progress">
-                Spend Rs. 82.00 more and get free shipping!
-            </div>
-
+            {/* BODY */}
             {cart.length === 0 ? (
-                <p className="empty-cart">Your cart is empty</p>
+                <div className="empty-cart-box">
+                    <i className="fa-solid fa-bag-shopping"></i>
+                    <p>Your cart is empty</p>
+                    <button onClick={onClose}>CONTINUE SHOPPING</button>
+                </div>
             ) : (
                 <>
-                    {cart.map((item) => (
-                        <div className="cart-item" key={item.id}>
-                            <img src={item.image[0]} alt="" />
+                    {/* SCROLLABLE ITEMS */}
+                    <div className="cart-items-wrapper">
+                        {cart.map((item) => (
+                            <div className="cart-item" key={item.id}>
+                                <img src={item.image[0]} alt="" />
 
-                            <div className="cart-info">
-                                <h6>{item.name}</h6>
-                                <p>Color: {item.color}</p>
-                                <p>
-                                    Rs. {item.price} <del>Rs. {item.oldPrice}</del>
-                                </p>
+                                <div className="cart-info">
+                                    <h6>{item.name}</h6>
+                                    <p className="cart-color">Color: {item.color}</p>
 
-                                <div className="qty">
-                                    <button onClick={() => updateQty(item.id, item.qty - 1)}>
-                                        -
-                                    </button>
-                                    <span>{item.qty}</span>
-                                    <button onClick={() => updateQty(item.id, item.qty + 1)}>
-                                        +
-                                    </button>
+                                    <div className="cart-price-qty">
+                                        <span className="price">
+                                            Rs. {item.price} <del>Rs. {item.oldPrice}</del>
+                                        </span>
+
+                                        <div className="qty-box">
+                                            <button onClick={() => updateQty(item.id, item.qty - 1)}>
+                                                −
+                                            </button>
+                                            <span>{item.qty}</span>
+                                            <button onClick={() => updateQty(item.id, item.qty + 1)}>
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <i
+                                    className="fa-regular fa-trash-can delete"
+                                    onClick={() => removeItem(item.id)}
+                                />
                             </div>
+                        ))}
+                    </div>
 
-                            <i
-                                className="fa-regular fa-trash-can delete"
-                                onClick={() => removeItem(item.id)}
-                            ></i>
-                        </div>
-                    ))}
-
+                    {/* FIXED FOOTER */}
                     <div className="cart-footer">
-                        <h5>Subtotal: Rs. {subtotal}</h5>
-                        <button className="checkout-btn">CHECKOUT</button>
+                        <div className="cart-subtotal">
+                            <span>Subtotal</span>
+                            <strong>Rs. {subtotal}</strong>
+                        </div>
+
+                        <div className="cart-actions">
+                            <button className="view-cart-btn">VIEW CART</button>
+                            <button className="checkout-btn">CHECKOUT</button>
+                        </div>
                     </div>
                 </>
             )}
