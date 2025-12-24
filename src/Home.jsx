@@ -485,7 +485,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                         <h2 className="text-center mb-4">New jewelrys</h2>
 
                         <div className="row">
-                            {products.map((p) => {
+                            {products.slice(0, 4).map((p) => {
                                 const isWishlisted = wishlist.some(
                                     (item) => item.id === p.id
                                 );
@@ -507,7 +507,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                                         onClick={() => {
                                                             setQuickViewProduct(p);
                                                             setActiveImage(0);
-                                                            setQty(1);   // 🔥 RESET QTY
+                                                            setQty(1);   
                                                         }}
 
                                                     >
@@ -566,7 +566,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
 
                                 <div className="row">
 
-                                    {/* LEFT SIDE */}
                                     <div className="col-md-6">
 
                                         <div className="quickview-image">
@@ -575,7 +574,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                                 alt=""
                                             />
 
-                                            {/* LEFT ARROW */}
                                             <button
                                                 className="nav left"
                                                 onClick={() =>
@@ -603,7 +601,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                             </button>
                                         </div>
 
-                                        {/* THUMBNAILS */}
                                         <div className="thumbs">
                                             {quickViewProduct.image.map((img, index) => (
                                                 <img
@@ -714,7 +711,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                         <h2 className="text-center mb-4">Trending Products</h2>
 
                         <div className="row">
-                            {products.map((p) => {
+                            {products.slice(4, 8).map((p) => {
                                 const isWishlisted = wishlist.some(
                                     (item) => item.id === p.id
                                 );

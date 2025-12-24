@@ -392,7 +392,17 @@ body {
   background: #fff;
   text-align: center;
   position: relative;
+  height: 100%;
 }
+
+
+.hover-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 
 .discount {
   position: absolute;
@@ -1733,7 +1743,6 @@ body {
   line-height: 1.6;
 }
 
-/* BUTTON */
 .shop-now-btn {
   background: #b08b6a;
   color: #fff;
