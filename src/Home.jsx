@@ -2,6 +2,7 @@
 // import "@fortawesome/fontawesome-free/css/all.min.css";
 import React, { useEffect, useState } from "react";
 import CartPage from "./CartPage";
+import Collection from "./Collection";
 
 import "./Style.css";
 import Logo from "./assets/logo.png";
@@ -38,6 +39,14 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
     const [cart, setCart] = useState([]);
     const [openCart, setOpenCart] = useState(false);
     const [showCartPage, setShowCartPage] = useState(false);
+    const [showCollection, setShowCollection] = useState(false);
+
+    const [timeLeft, setTimeLeft] = useState({
+        days: 1,
+        hours: 16,
+        minutes: 5,
+        seconds: 43,
+    });
 
     const updateQty = (id, qty) => {
         setCart((prev) =>
@@ -82,14 +91,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
         setOpenCart(true);
     };
 
-
-    const [timeLeft, setTimeLeft] = useState({
-        days: 1,
-        hours: 16,
-        minutes: 5,
-        seconds: 43,
-    });
-
     useEffect(() => {
         const timer = setInterval(() => {
             setTimeLeft((prev) => {
@@ -130,6 +131,19 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
 
         return () => clearInterval(interval);
     }, []);
+    if (showCollection) {
+        return (
+            <Collection
+                onBack={() => setShowCollection(false)}
+                addToCart={addToCart}
+                toggleWishlist={toggleWishlist}
+                wishlist={wishlist}
+                setQuickViewProduct={setQuickViewProduct}
+                setActiveImage={setActiveImage}
+                setQty={setQty}
+            />
+        );
+    }
 
     return (
         <>
@@ -495,9 +509,27 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                         <div className="product-card">
                                             <span className="discount">{p.discount}%</span>
 
-                                            {/* IMAGE */}
                                             <div className="img-wrap">
                                                 <img src={p.image[0]} alt={p.name} />
+
+                                                <div className="countdown">
+                                                    <div>
+                                                        <strong>{timeLeft.days}</strong>
+                                                        <span>DAY</span>
+                                                    </div>
+                                                    <div>
+                                                        <strong>{timeLeft.hours}</strong>
+                                                        <span>HRS</span>
+                                                    </div>
+                                                    <div>
+                                                        <strong>{timeLeft.minutes}</strong>
+                                                        <span>MIN</span>
+                                                    </div>
+                                                    <div>
+                                                        <strong>{timeLeft.seconds}</strong>
+                                                        <span>SEC</span>
+                                                    </div>
+                                                </div>
 
                                                 <div className="image-overlay">
                                                     <button onClick={() => toggleWishlist(p)}>
@@ -507,7 +539,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                                         onClick={() => {
                                                             setQuickViewProduct(p);
                                                             setActiveImage(0);
-                                                            setQty(1);   
+                                                            setQty(1);
                                                         }}
 
                                                     >
@@ -669,7 +701,9 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                     )}
 
                     <div className="container text-center my-5">
-                        <button className="view-collection-btn">VIEW COLLECTION</button>
+                        <button onClick={() => setShowCollection(true)} className="view-collection-btn">
+                            VIEW COLLECTION
+                        </button>
                     </div>
 
                     <div className="container my-5">
@@ -684,8 +718,8 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                         <div className="banner-text">
                                             <h2>Unleash your<br />inner shine</h2>
                                             <p>It is a long established fact that a reader will<br></br>
-                                            be distracted by the readable content of a<br></br>
-                                            page when looking at its layout.</p>
+                                                be distracted by the readable content of a<br></br>
+                                                page when looking at its layout.</p>
                                             <button className="shop-now-btn">SHOP NOW</button>
                                         </div>
                                     </div>
@@ -723,6 +757,24 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
 
                                             <div className="img-wrap">
                                                 <img src={p.image[0]} alt={p.name} />
+                                                <div className="countdown">
+                                                    <div>
+                                                        <strong>{timeLeft.days}</strong>
+                                                        <span>DAY</span>
+                                                    </div>
+                                                    <div>
+                                                        <strong>{timeLeft.hours}</strong>
+                                                        <span>HRS</span>
+                                                    </div>
+                                                    <div>
+                                                        <strong>{timeLeft.minutes}</strong>
+                                                        <span>MIN</span>
+                                                    </div>
+                                                    <div>
+                                                        <strong>{timeLeft.seconds}</strong>
+                                                        <span>SEC</span>
+                                                    </div>
+                                                </div>
 
                                                 <div className="image-overlay">
                                                     <button onClick={() => toggleWishlist(p)}>
@@ -732,7 +784,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                                         onClick={() => {
                                                             setQuickViewProduct(p);
                                                             setActiveImage(0);
-                                                            setQty(1);   
+                                                            setQty(1);
                                                         }}
 
                                                     >
@@ -779,7 +831,9 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                     </div>
 
                     <div className="container text-center my-5">
-                        <button className="view-collection-btn">VIEW COLLECTION</button>
+                        <button onClick={() => setShowCollection(true)} className="view-collection-btn">
+                            VIEW COLLECTION
+                        </button>
                     </div>
 
                     <hr></hr>
