@@ -1812,107 +1812,189 @@ body {
     padding: 30px;
   }
 }
-
-/* ===== SHOPIFY COLLECTION ===== */
-.shopify-collection-header {
+.collection-header {
     background: #f6f6f6;
-    text-align: center;
-    padding: 50px 0;
-}
-
-.shopify-collection-header p {
-    font-size: 13px;
-    color: #777;
-    margin-bottom: 6px;
-}
-
-.shopify-collection-header h1 {
-    font-size: 38px;
-    font-weight: 600;
-}
-
-/* Layout */
-.shopify-collection {
-    margin-top: 50px;
-}
-
-/* ===== SIDEBAR ===== */
-.shopify-sidebar {
-    border: 1px solid #eee;
-    padding: 22px;
-    background: #fff;
-}
-
-.sb-block {
+    padding: 40px 0;
     margin-bottom: 30px;
 }
 
-.sb-block h4 {
+.collection-header h1 {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.breadcrumb {
+    font-size: 13px;
+    color: #777;
+}
+
+.collection-sidebar {
+    border-right: 1px solid #eee;
+    padding-right: 15px;
+}
+
+.filter-block {
+    margin-bottom: 25px;
+}
+
+.filter-block h4 {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 15px;
 }
 
-.sb-block ul {
+.filter-block ul {
     list-style: none;
     padding: 0;
 }
 
-.sb-block ul li {
+.filter-block li {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
-    margin-bottom: 10px;
-    color: #444;
+    margin-bottom: 8px;
 }
 
-.sb-block label {
+.filter-block label {
+    cursor: pointer;
+}
+
+.price-range {
     display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-/* Price */
-.sb-block input[type="range"] {
-    width: 100%;
-}
-
-.price-box {
-    display: flex;
-    justify-content: space-between;
+    gap: 10px;
     margin-top: 10px;
 }
 
-.price-box input {
-    width: 48%;
-    padding: 6px;
-    border: 1px solid #ddd;
-    background: #fafafa;
-    font-size: 13px;
+.price-range input {
+    width: 100%;
+    text-align: center;
 }
 
-/* Colors */
-.color-dots {
+.color-filter {
     display: flex;
     gap: 10px;
 }
 
-.color-dots span {
-    width: 22px;
-    height: 22px;
+.color-filter span {
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    border: 1px solid #ddd;
     cursor: pointer;
+    border: 1px solid #ccc;
 }
 
-.color-dots .gold { background: #d4af37; }
-.color-dots .silver { background: #cfd8dc; }
-.color-dots .yellow { background: #fbc02d; }
+.beige { background: #e8d8b5; }
+.bronze { background: #cd7f32; }
+.brown { background: #8b4513; }
+.gold { background: gold; }
+.silver { background: silver; }
+.yellow { background: #ffd700; }
 
-/* Toolbar */
-.shopify-toolbar {
+.special-product .sp-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.special-product img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.collection-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
+}
+
+.collection-toolbar select {
+    padding: 6px 10px;
+}
+
+/* ===== COLLECTION TOP ===== */
+.collection-top {
     margin-bottom: 25px;
+}
+
+/* Banner */
+.collection-banner {
+    position: relative;
+    overflow: hidden;
+}
+
+.collection-banner img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Circle Content */
+.banner-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #b08c73;
+    color: #fff;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.banner-circle small {
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.banner-circle h2 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* Description */
+.collection-desc {
+    margin: 18px 0;
+    font-size: 14px;
+    color: #777;
+    line-height: 1.6;
+}
+
+/* Meta Row */
+.collection-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+    margin-bottom: 20px;
+}
+
+.view-icons i {
+    margin-right: 12px;
+    cursor: pointer;
+    color: #999;
+}
+
+.sort-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sort-box select {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    cursor: pointer;
 }
