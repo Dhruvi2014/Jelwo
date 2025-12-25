@@ -1,6 +1,6 @@
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "@fortawesome/fontawesome-free/css/all.min.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import CartPage from "./CartPage";
 import Collection from "./Collection";
 
@@ -29,6 +29,11 @@ import CartDrawer from "./CartDrawer";
 import kristen from "./assets/kristen.avif";
 import smith from "./assets/smith.webp";
 
+import n1 from "./assets/news1.webp";
+import n2 from "./assets/news2.jpg";
+import n3 from "./assets/news3.webp";
+import n4 from "./assets/news4.webp";
+import n5 from "./assets/news5.webp";
 
 function Home({ wishlist = [], toggleWishlist, openWishlist }) {
     const [quickViewProduct, setQuickViewProduct] = useState(null);
@@ -59,6 +64,8 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
     const removeItem = (id) => {
         setCart((prev) => prev.filter((item) => item.id !== id));
     };
+
+
 
     // if (showCartPage) {
     //     return (
@@ -91,6 +98,12 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
         setOpenCart(true);
     };
 
+    const blogSliderRef = useRef(null);
+    const [blogIndex, setBlogIndex] = useState(0);
+
+    const visibleBlogs = 3;
+    const totalBlogs = 5;
+    const maxBlogIndex = totalBlogs - visibleBlogs;
     useEffect(() => {
         const timer = setInterval(() => {
             setTimeLeft((prev) => {
@@ -144,6 +157,22 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
             />
         );
     }
+
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setBlogIndex((prev) => (prev >= maxBlogIndex ? 0 : prev + 1));
+        }, 4000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+        if (blogSliderRef.current) {
+            blogSliderRef.current.style.transform = `translateX(-${blogIndex * 33.3333}%)`;
+        }
+    }, [blogIndex]);
+
 
     return (
         <>
@@ -909,6 +938,102 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                         removeItem={removeItem}
                         setShowCartPage={setShowCartPage}
                     />
+
+                    <section className="blog-section">
+                        <h2 className="text-center mb-5">Jewelry news</h2>
+
+                        <div className="blog-carousel">
+                            <div className="blog-inner" ref={blogSliderRef}>
+
+                                <div className="blog-item">
+                                    <div className="blog-card">
+                                        <div className="blog-img">
+                                            <img src={n1} />
+                                            <div className="blog-hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                        </div>
+
+                                        <div className="blog-content">
+                                            <p className="blog-meta">02, MAR 2025 &nbsp; | &nbsp; By Andrew johns</p>
+                                            <p className="blog-desc">
+                                                As part of our mission create space for women to express their sensuality without shame fear or the patriarchal gaze ...
+                                            </p>
+                                            <button className="blog-btn">READ MORE</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="blog-item">
+                                    <div className="blog-card">
+                                        <div className="blog-img">
+                                            <img src={n2} />
+                                            <div className="blog-hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                        </div>
+
+                                        <div className="blog-content">
+                                            <p className="blog-meta">02, MAR 2025 &nbsp; | &nbsp; By Andrew johns</p>
+                                            <p className="blog-desc">
+                                                As part of our mission create space for women to express their sensuality without shame fear or the patriarchal gaze ...
+                                            </p>
+                                            <button className="blog-btn">READ MORE</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="blog-item">
+                                    <div className="blog-card">
+                                        <div className="blog-img">
+                                            <img src={n3} />
+                                            <div className="blog-hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                        </div>
+
+                                        <div className="blog-content">
+                                            <p className="blog-meta">02, MAR 2025 &nbsp; | &nbsp; By Andrew johns</p>
+                                            <p className="blog-desc">
+                                                As part of our mission create space for women to express their sensuality without shame fear or the patriarchal gaze ...
+                                            </p>
+                                            <button className="blog-btn">READ MORE</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="blog-item">
+                                    <div className="blog-card">
+                                        <div className="blog-img">
+                                            <img src={n4} />
+                                            <div className="blog-hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                        </div>
+
+                                        <div className="blog-content">
+                                            <p className="blog-meta">02, MAR 2025 &nbsp; | &nbsp; By Andrew johns</p>
+                                            <p className="blog-desc">
+                                                As part of our mission create space for women to express their sensuality without shame fear or the patriarchal gaze ...
+                                            </p>
+                                            <button className="blog-btn">READ MORE</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="blog-item">
+                                    <div className="blog-card">
+                                        <div className="blog-img">
+                                            <img src={n5} />
+                                            <div className="blog-hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                        </div>
+
+                                        <div className="blog-content">
+                                            <p className="blog-meta">02, MAR 2025 &nbsp; | &nbsp; By Andrew johns</p>
+                                            <p className="blog-desc">
+                                                As part of our mission create space for women to express their sensuality without shame fear or the patriarchal gaze ...
+                                            </p>
+                                            <button className="blog-btn">READ MORE</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
                 </>
             )}
         </>
