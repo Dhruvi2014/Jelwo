@@ -1902,6 +1902,11 @@ body {
     object-fit: cover;
 }
 
+.sidebanner img{
+  height: 500px;
+  width: 300px;
+}
+
 .collection-toolbar {
     display: flex;
     justify-content: space-between;

@@ -3,19 +3,29 @@ import products from "./products";
 import CartDrawer from "./CartDrawer";
 import "./Style.css";
 import banner5 from "./assets/banner5.webp";
+import sidebanner from "./assets/sidebanner.webp"
+
+import visa from "./assets/visa.png";
+import mastercard from "./assets/mastercard.png";
+import paypal from "./assets/paypal.png";
+import discover from "./assets/discover.png";
 
 function Collection({
     wishlist,
     toggleWishlist,
     onBack,
 }) {
-    // ================= STATES =================
     const [quickViewProduct, setQuickViewProduct] = useState(null);
     const [activeImage, setActiveImage] = useState(0);
     const [qty, setQty] = useState(1);
 
     const [cart, setCart] = useState([]);
     const [openCart, setOpenCart] = useState(false);
+
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [availability, setAvailability] = useState([]);
+    const [priceRange, setPriceRange] = useState([0, 28]);
+    const [selectedColors, setSelectedColors] = useState([]);
 
     const [timeLeft, setTimeLeft] = useState({
         days: 1,
@@ -82,6 +92,46 @@ function Collection({
         setCart((prev) => prev.filter((item) => item.id !== id));
     };
 
+    const toggleCategory = (cat) => {
+        setSelectedCategories((prev) =>
+            prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
+        );
+    };
+
+    const toggleAvailability = (type) => {
+        setAvailability((prev) =>
+            prev.includes(type) ? prev.filter(a => a !== type) : [...prev, type]
+        );
+    };
+
+    const toggleColor = (color) => {
+        setSelectedColors((prev) =>
+            prev.includes(color) ? prev.filter(c => c !== color) : [...prev, color]
+        );
+    };
+
+
+    const filteredProducts = products.filter((p) => {
+        if (selectedCategories.length && !selectedCategories.includes(p.category)) {
+            return false;
+        }
+
+        if (availability.length) {
+            if (availability.includes("in") && !p.inStock) return false;
+            if (availability.includes("out") && p.inStock) return false;
+        }
+
+        if (p.price < priceRange[0] || p.price > priceRange[1]) {
+            return false;
+        }
+
+        if (selectedColors.length && !selectedColors.includes(p.color)) {
+            return false;
+        }
+
+        return true;
+    });
+
     return (
         <>
             {/* <div className="collection-header">
@@ -115,60 +165,104 @@ function Collection({
                             <div className="filter-block">
                                 <h4>Categories</h4>
                                 <ul>
-                                    <li><label><input type="checkbox" /> 14K</label><span>(12)</span></li>
-                                    <li><label><input type="checkbox" /> 18K</label><span>(12)</span></li>
-                                    <li><label><input type="checkbox" /> 22K</label><span>(12)</span></li>
-                                    <li><label><input type="checkbox" /> 24K</label><span>(12)</span></li>
-                                    <li><label><input type="checkbox" /> Bangles</label><span>(12)</span></li>
-                                    <li><label><input type="checkbox" /> Bracelets</label><span>(12)</span></li>
-                                    <li><label><input type="checkbox" /> Brooch</label><span>(12)</span></li>
+                                    {["Bangles", "Bracelets", "Brooch", "Chain", "Diamond"].map(cat => (
+                                        <li key={cat}>
+                                            <label>
+                                                <input
+                                                    type="checkbox"
+                                                    checked={selectedCategories.includes(cat)}
+                                                    onChange={() => toggleCategory(cat)}
+                                                />
+                                                {cat}
+                                            </label>
+                                            <span>(12)</span>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
 
                             <div className="filter-block">
+                                <h4>Filter</h4>
+                            </div>
+
+                            <div className="filter-block">
                                 <h4>Availability</h4>
-                                <label><input type="checkbox" /> In stock (12)</label>
-                                <label><input type="checkbox" /> Out of stock (1)</label>
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        onChange={() => toggleAvailability("in")}
+                                    /> In stock (12)
+                                </label><br></br>
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        onChange={() => toggleAvailability("out")}
+                                    /> Out of stock (1)
+                                </label>
                             </div>
 
                             <div className="filter-block">
                                 <h4>Price</h4>
-                                <input type="range" min="0" max="28" />
+
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="28"
+                                    value={priceRange[1]}
+                                    onChange={(e) =>
+                                        setPriceRange([0, Number(e.target.value)])
+                                    }
+                                />
+
                                 <div className="price-range">
-                                    <input value="₹0" disabled />
-                                    <input value="₹28" disabled />
+                                    <input value={`₹${priceRange[0]}`} disabled />
+                                    <input value={`₹${priceRange[1]}`} disabled />
                                 </div>
                             </div>
 
                             <div className="filter-block">
                                 <h4>Color</h4>
                                 <div className="color-filter">
-                                    <span className="beige"></span>
-                                    <span className="bronze"></span>
-                                    <span className="brown"></span>
-                                    <span className="gold"></span>
-                                    <span className="silver"></span>
-                                    <span className="yellow"></span>
+                                    {["Gold", "Brown", "Silver", "Yellow"].map(color => (
+                                        <span
+                                            key={color}
+                                            className={color.toLowerCase()}
+                                            onClick={() => toggleColor(color)}
+                                        ></span>
+                                    ))}
                                 </div>
                             </div>
 
                             <div className="filter-block special-product">
                                 <h4>Special product</h4>
+
                                 <div className="sp-item">
                                     <img src={products[0].image[0]} alt="" />
                                     <div>
-                                        <p>Glitter diamond ring</p>
-                                        <strong>Rs. 10.00</strong>
+                                        <p>{products[0].name}</p>
+                                        <strong>Rs. {products[0].price}</strong>
                                     </div>
+                                </div>
+
+                                <div className="sp-item">
+                                    <img src={products[1].image[0]} alt="" />
+                                    <div>
+                                        <p>{products[1].name}</p>
+                                        <strong>Rs. {products[1].price}</strong>
+                                    </div>
+                                </div>
+                                <br></br>
+                                <div className="sidebanner">
+                                    <img src={sidebanner}></img>
                                 </div>
                             </div>
 
                         </aside>
+
                     </div>
 
                     <div className="col-lg-9 col-md-8">
 
-                        {/* ===== COLLECTION TOP IMAGE ===== */}
                         <div className="collection-top">
 
                             <div className="collection-banner">
@@ -177,44 +271,34 @@ function Collection({
                                     alt="Chain Collection"
                                 />
 
-                                {/* <div className="banner-content">
-                                    <small>GET A 30% DISCOUNT</small>
-                                    <h2>
-                                        Shine with our <br /> new collection
-                                    </h2>
-                                </div> */}
-                            </div>
+                                <p className="collection-desc">
+                                    Care for fiber: 30% more recycled polyester. We label garments manufactured
+                                    using environmentally friendly technologies and raw materials with the Join
+                                    Life label.
+                                </p>
 
-                            <p className="collection-desc">
-                                Care for fiber: 30% more recycled polyester. We label garments manufactured
-                                using environmentally friendly technologies and raw materials with the Join
-                                Life label.
-                            </p>
+                                <div className="collection-meta">
+                                    <div className="view-icons">
+                                        <i className="fa-solid fa-border-all"></i>
+                                        <i className="fa-solid fa-bars"></i>
+                                    </div>
 
-                            <div className="collection-meta">
-                                <div className="view-icons">
-                                    <i className="fa-solid fa-border-all"></i>
-                                    <i className="fa-solid fa-bars"></i>
-                                </div>
+                                    <span>{products.length} products</span>
 
-                                <span>{products.length} products</span>
-
-                                <div className="sort-box">
-                                    <label>Sort by:</label>
-                                    <select>
-                                        <option>Best selling</option>
-                                        <option>Price, low to high</option>
-                                        <option>Price, high to low</option>
-                                    </select>
+                                    <div className="sort-box">
+                                        <label>Sort by:</label>
+                                        <select>
+                                            <option>Best selling</option>
+                                            <option>Price, low to high</option>
+                                            <option>Price, high to low</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
 
-
-
                         <div className="row">
-                            {products.map((p) => {
+                            {filteredProducts.map((p) => {
                                 const isWishlisted = wishlist.some(
                                     (item) => item.id === p.id
                                 );
@@ -228,7 +312,6 @@ function Collection({
                                             <div className="img-wrap">
                                                 <img src={p.image[0]} alt={p.name} />
 
-                                                {/* TIMER */}
                                                 <div className="countdown">
                                                     <div><strong>{timeLeft.days}</strong><span>DAY</span></div>
                                                     <div><strong>{timeLeft.hours}</strong><span>HRS</span></div>
@@ -297,16 +380,90 @@ function Collection({
             {quickViewProduct && (
                 <div className="quickview-backdrop">
                     <div className="quickview-modal">
-                        <span className="close-btn" onClick={() => setQuickViewProduct(null)}>✕</span>
+
+                        <span
+                            className="close-btn"
+                            onClick={() => setQuickViewProduct(null)}
+                        >
+                            ✕
+                        </span>
 
                         <div className="row">
+
                             <div className="col-md-6">
-                                <img src={quickViewProduct.image[activeImage]} alt="" />
+
+                                <div className="quickview-image">
+                                    <img
+                                        src={quickViewProduct.image[activeImage]}
+                                        alt=""
+                                    />
+
+                                    <button
+                                        className="nav left"
+                                        onClick={() =>
+                                            setActiveImage(
+                                                activeImage === 0
+                                                    ? quickViewProduct.image.length - 1
+                                                    : activeImage - 1
+                                            )
+                                        }
+                                    >
+                                        ‹
+                                    </button>
+
+                                    <button
+                                        className="nav right"
+                                        onClick={() =>
+                                            setActiveImage(
+                                                activeImage === quickViewProduct.image.length - 1
+                                                    ? 0
+                                                    : activeImage + 1
+                                            )
+                                        }
+                                    >
+                                        ›
+                                    </button>
+                                </div>
+
+                                <div className="thumbs">
+                                    {quickViewProduct.image.map((img, index) => (
+                                        <img
+                                            key={index}
+                                            src={img}
+                                            className={activeImage === index ? "active-thumb" : ""}
+                                            onClick={() => setActiveImage(index)}
+                                        />
+                                    ))}
+                                </div>
                             </div>
 
                             <div className="col-md-6">
+
                                 <h3>{quickViewProduct.name}</h3>
-                                <p>Rs. {quickViewProduct.price}</p>
+
+                                <div className="rating">★★★★★</div>
+
+                                <p className="price">
+                                    Rs. {quickViewProduct.price}
+                                    <del> Rs. {quickViewProduct.oldPrice}</del>
+                                    <span className="sale-badge">
+                                        Sale {quickViewProduct.discount}%
+                                    </span>
+                                </p>
+
+                                <p className="stock">🟢 16 in stock</p>
+
+                                <p className="desc">
+                                    Care for fiber: 30% more recycled polyester.
+                                    Environment friendly product.
+                                </p>
+
+                                <label>Color</label>
+                                <div className="color-dots">
+                                    <span className="gold"></span>
+                                    <span className="brown"></span>
+                                    <span className="silver"></span>
+                                </div>
 
                                 <div className="qty-box">
                                     <button onClick={() => setQty(q => Math.max(1, q - 1))}>-</button>
@@ -314,13 +471,19 @@ function Collection({
                                     <button onClick={() => setQty(q => q + 1)}>+</button>
                                 </div>
 
-                                <button
-                                    className="add-cart"
-                                    onClick={() => addToCart(quickViewProduct, "Gold", qty)}
-                                >
-                                    ADD TO CART
-                                </button>
+
+                                <div className="action-btns">
+                                    <button
+                                        className="add-cart"
+                                        onClick={() => addToCart(quickViewProduct, "Gold", qty)}
+                                    >
+                                        ADD TO CART
+                                    </button>
+                                    <button className="buy-now">BUY IT NOW</button>
+                                </div>
+
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -333,6 +496,95 @@ function Collection({
                 updateQty={updateQty}
                 removeItem={removeItem}
             />
+            <br></br>
+            <footer className="footer-section">
+                <div className="container">
+                    <div className="row gy-4">
+                        <div className="col-md-3">
+                            <h4 className="footer-logo">JELWO</h4>
+                            <p>
+                                <i className="fa-solid fa-location-dot"></i>
+                                &nbsp;55 East 10th street, new york,<br />
+                                ny 10003, united states
+                            </p>
+                            <p>
+                                <i className="fa-solid fa-phone"></i>
+                                &nbsp;+ (220) 123 456 7890
+                            </p>
+                            <p>
+                                <i className="fa-solid fa-envelope"></i>
+                                &nbsp;demo123546@gmail.com
+                            </p>
+                        </div>
+
+                        <div className="col-md-2">
+                            <h5>Information</h5>
+                            <ul>
+                                <li>About us</li>
+                                <li>Contact us</li>
+                                <li>Faq's</li>
+                                <li>News</li>
+                            </ul>
+                        </div>
+
+                        <div className="col-md-2">
+                            <h5>Privacy & terms</h5>
+                            <ul>
+                                <li>Privacy policy</li>
+                                <li>Refund policy</li>
+                                <li>Shipping & return</li>
+                                <li>Terms & condition</li>
+                            </ul>
+                        </div>
+
+                        <div className="col-md-2">
+                            <h5>Category</h5>
+                            <ul>
+                                <li>Rings</li>
+                                <li>Earring</li>
+                                <li>Pendant</li>
+                                <li>Necklaces</li>
+                                <li>Bracelets</li>
+                            </ul>
+                        </div>
+
+                        <div className="col-md-3">
+                            <h5>Visit store</h5>
+                            <p>Mon - sat : 10am - 11pm</p>
+                            <p>Sun : 10am - 4pm</p>
+                            <p>7 Days a week</p>
+                        </div>
+                    </div>
+
+                    <div className="row align-items-center mt-4">
+                        <div className="col-md-4 social-icons">
+                            <i className="fa-brands fa-facebook-f"></i>
+                            <i className="fa-brands fa-x-twitter"></i>
+                            <i className="fa-brands fa-instagram"></i>
+                            <i className="fa-brands fa-pinterest-p"></i>
+                            <i className="fa-brands fa-youtube"></i>
+                        </div>
+
+                        <div className="col-md-8 subscribe-box">
+                            <span>Subscribe and get 15% discount.</span>
+                            <input type="email" placeholder="Enter your email" />
+                            <button>SUBSCRIBE</button>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <div className="footer-bottom">
+                <div className="container d-flex justify-content-between align-items-center">
+                    <p>Copyright © 2025 by spacingtech</p>
+                    <div className="payment-icons">
+                        <img src={visa} />
+                        <img src={mastercard} />
+                        <img src={paypal} />
+                        <img src={discover} />
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
