@@ -20,11 +20,6 @@ import products from "./products";
 import banner3 from "./assets/banner3.webp";
 import banner4 from "./assets/banner4.webp";
 
-import p1 from "./assets/p1.webp";
-import p2 from "./assets/p2.webp";
-import p3 from "./assets/p3.webp";
-import p4 from "./assets/p4.webp";
-
 import CartDrawer from "./CartDrawer";
 import kristen from "./assets/kristen.avif";
 import smith from "./assets/smith.webp";
@@ -66,7 +61,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
     };
 
 
-
     // if (showCartPage) {
     //     return (
     //         <CartPage
@@ -104,6 +98,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
     const visibleBlogs = 3;
     const totalBlogs = 5;
     const maxBlogIndex = totalBlogs - visibleBlogs;
+
     useEffect(() => {
         const timer = setInterval(() => {
             setTimeLeft((prev) => {
@@ -144,21 +139,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
 
         return () => clearInterval(interval);
     }, []);
-    if (showCollection) {
-        return (
-            <Collection
-                onBack={() => setShowCollection(false)}
-                addToCart={addToCart}
-                toggleWishlist={toggleWishlist}
-                wishlist={wishlist}
-                setQuickViewProduct={setQuickViewProduct}
-                setActiveImage={setActiveImage}
-                setQty={setQty}
-            />
-        );
-    }
-
-
+    
     useEffect(() => {
         const interval = setInterval(() => {
             setBlogIndex((prev) => (prev >= maxBlogIndex ? 0 : prev + 1));
@@ -173,6 +154,19 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
         }
     }, [blogIndex]);
 
+    if (showCollection) {
+        return (
+            <Collection
+                onBack={() => setShowCollection(false)}
+                addToCart={addToCart}
+                toggleWishlist={toggleWishlist}
+                wishlist={wishlist}
+                setQuickViewProduct={setQuickViewProduct}
+                setActiveImage={setActiveImage}
+                setQty={setQty}
+            />
+        );
+    }
 
     return (
         <>
@@ -867,7 +861,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
 
                     <hr></hr>
 
-
                     <section className="testimonial-section py-5">
                         <div className="container">
                             <h2 className="text-center mb-5">Happy customer</h2>
@@ -949,7 +942,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                     <div className="blog-card">
                                         <div className="blog-img">
                                             <img src={n1} />
-                                            <div className="blog-hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                            <div className="blog-hover-arrow"><i className="fa-solid fa-arrow-right"></i></div>
                                         </div>
 
                                         <div className="blog-content">
@@ -966,7 +959,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                     <div className="blog-card">
                                         <div className="blog-img">
                                             <img src={n2} />
-                                            <div className="blog-hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                            <div className="blog-hover-arrow"><i className="fa-solid fa-arrow-right"></i></div>
                                         </div>
 
                                         <div className="blog-content">
@@ -983,7 +976,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                     <div className="blog-card">
                                         <div className="blog-img">
                                             <img src={n3} />
-                                            <div className="blog-hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                            <div className="blog-hover-arrow"><i className="fa-solid fa-arrow-right"></i></div>
                                         </div>
 
                                         <div className="blog-content">
@@ -1000,7 +993,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                     <div className="blog-card">
                                         <div className="blog-img">
                                             <img src={n4} />
-                                            <div className="blog-hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                            <div className="blog-hover-arrow"><i className="fa-solid fa-arrow-right"></i></div>
                                         </div>
 
                                         <div className="blog-content">
@@ -1017,7 +1010,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                     <div className="blog-card">
                                         <div className="blog-img">
                                             <img src={n5} />
-                                            <div className="blog-hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                            <div className="blog-hover-arrow"><i className="fa-solid fa-arrow-right"></i></div>
                                         </div>
 
                                         <div className="blog-content">
