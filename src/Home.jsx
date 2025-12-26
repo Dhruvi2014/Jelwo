@@ -30,7 +30,26 @@ import n3 from "./assets/news3.webp";
 import n4 from "./assets/news4.webp";
 import n5 from "./assets/news5.webp";
 
-function Home({ wishlist = [], toggleWishlist, openWishlist }) {
+import v1 from "./assets/video1.mp4";
+import v2 from "./assets/video2.mp4";
+import v3 from "./assets/video3.mp4";
+import v4 from "./assets/video4.mp4";
+import v5 from "./assets/video5.mp4";
+import v6 from "./assets/video6.mp4";
+
+import i1 from "./assets/j2.webp";
+import i2 from "./assets/j3.webp";
+import i3 from "./assets/p4.webp";
+import i4 from "./assets/j1-2.webp";
+import i5 from "./assets/j3.webp";
+import i6 from "./assets/j1.webp";
+
+import visa from "./assets/visa.png";
+import mastercard from "./assets/mastercard.png";
+import paypal from "./assets/paypal.png";
+import discover from "./assets/discover.png";
+
+function Home({ wishlist = [], toggleWishlist, openWishlist, openNews }) {
     const [quickViewProduct, setQuickViewProduct] = useState(null);
     const [selectedColor, setSelectedColor] = useState("gold");
     const [qty, setQty] = useState(1);
@@ -99,6 +118,48 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
     const totalBlogs = 5;
     const maxBlogIndex = totalBlogs - visibleBlogs;
 
+    const videos = [
+        {
+            video: v1,
+            title: "Chic diamond ring",
+            price: "Rs. 22.00",
+            img: i1,
+        },
+        {
+            video: v2,
+            title: "Flower jhumka",
+            price: "Rs. 18.00",
+            img: i2,
+        },
+        {
+            video: v3,
+            title: "Sherbi ring",
+            price: "Rs. 26.00",
+            img: i3,
+        },
+        {
+            video: v4,
+            title: "Drop gold earrings",
+            price: "Rs. 14.00",
+            img: i4,
+        },
+        {
+            video: v5,
+            title: "Flower pendant",
+            price: "Rs. 22.00",
+            img: i5,
+        },
+        {
+            video: v6,
+            title: "Diamond studs",
+            price: "Rs. 30.00",
+            img: i6,
+        },
+    ];
+
+    const [startIndex, setStartIndex] = useState(0);
+
+
     useEffect(() => {
         const timer = setInterval(() => {
             setTimeLeft((prev) => {
@@ -124,6 +185,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
 
         return () => clearInterval(timer);
     }, []);
+
     useEffect(() => {
         const inner = document.querySelector("#categorySlider .category-inner");
         if (!inner) return;
@@ -139,7 +201,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
 
         return () => clearInterval(interval);
     }, []);
-    
+
     useEffect(() => {
         const interval = setInterval(() => {
             setBlogIndex((prev) => (prev >= maxBlogIndex ? 0 : prev + 1));
@@ -192,7 +254,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                             <div className="right-icons d-flex align-items-center gap-3">
                                 <div className="search-box">
                                     <input type="text" placeholder="Search product..." />
-                                    <i class="fa-solid fa-magnifying-glass"></i>            </div>
+                                    <i className="fa-solid fa-magnifying-glass"></i>            </div>
 
                                 <i className="fa-regular fa-user"></i>
                                 {/* <i class="fa-regular fa-heart"></i> */}
@@ -709,15 +771,12 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                                 onClick={() =>
                                                     addToCart(quickViewProduct, selectedColor, qty)
                                                 }
-
                                             >
                                                 ADD TO CART
                                             </button>
                                             <button className="buy-now">BUY IT NOW</button>
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -942,15 +1001,25 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                     <div className="blog-card">
                                         <div className="blog-img">
                                             <img src={n1} />
-                                            <div className="blog-hover-arrow"><i className="fa-solid fa-arrow-right"></i></div>
+                                            <div
+                                                className="blog-hover-arrow"
+                                                onClick={() => openNews({ image: n1 })}
+                                            >
+                                                <i className="fa-solid fa-arrow-right"></i>
+                                            </div>
                                         </div>
 
                                         <div className="blog-content">
-                                            <p className="blog-meta">02, MAR 2025 &nbsp; | &nbsp; By Andrew johns</p>
+                                            <p className="blog-meta">02, MAR 2025 | By Andrew Johns</p>
                                             <p className="blog-desc">
-                                                As part of our mission create space for women to express their sensuality without shame fear or the patriarchal gaze ...
+                                                As part of our mission create space for women to express their sensuality...
                                             </p>
-                                            <button className="blog-btn">READ MORE</button>
+                                            <button
+                                                className="blog-btn"
+                                                onClick={() => openNews({ image: n1 })}
+                                            >
+                                                READ MORE
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -959,15 +1028,25 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                     <div className="blog-card">
                                         <div className="blog-img">
                                             <img src={n2} />
-                                            <div className="blog-hover-arrow"><i className="fa-solid fa-arrow-right"></i></div>
+                                            <div
+                                                className="blog-hover-arrow"
+                                                onClick={() => openNews({ image: n2 })}
+                                            >
+                                                <i className="fa-solid fa-arrow-right"></i>
+                                            </div>
                                         </div>
 
                                         <div className="blog-content">
-                                            <p className="blog-meta">02, MAR 2025 &nbsp; | &nbsp; By Andrew johns</p>
+                                            <p className="blog-meta">02, MAR 2025 | By Andrew Johns</p>
                                             <p className="blog-desc">
-                                                As part of our mission create space for women to express their sensuality without shame fear or the patriarchal gaze ...
+                                                As part of our mission create space for women to express their sensuality...
                                             </p>
-                                            <button className="blog-btn">READ MORE</button>
+                                            <button
+                                                className="blog-btn"
+                                                onClick={() => openNews({ image: n2 })}
+                                            >
+                                                READ MORE
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -976,15 +1055,25 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                     <div className="blog-card">
                                         <div className="blog-img">
                                             <img src={n3} />
-                                            <div className="blog-hover-arrow"><i className="fa-solid fa-arrow-right"></i></div>
+                                            <div
+                                                className="blog-hover-arrow"
+                                                onClick={() => openNews({ image: n3 })}
+                                            >
+                                                <i className="fa-solid fa-arrow-right"></i>
+                                            </div>
                                         </div>
 
                                         <div className="blog-content">
-                                            <p className="blog-meta">02, MAR 2025 &nbsp; | &nbsp; By Andrew johns</p>
+                                            <p className="blog-meta">02, MAR 2025 | By Andrew Johns</p>
                                             <p className="blog-desc">
-                                                As part of our mission create space for women to express their sensuality without shame fear or the patriarchal gaze ...
+                                                As part of our mission create space for women to express their sensuality...
                                             </p>
-                                            <button className="blog-btn">READ MORE</button>
+                                            <button
+                                                className="blog-btn"
+                                                onClick={() => openNews({ image: n3 })}
+                                            >
+                                                READ MORE
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -993,15 +1082,25 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                     <div className="blog-card">
                                         <div className="blog-img">
                                             <img src={n4} />
-                                            <div className="blog-hover-arrow"><i className="fa-solid fa-arrow-right"></i></div>
+                                            <div
+                                                className="blog-hover-arrow"
+                                                onClick={() => openNews({ image: n4 })}
+                                            >
+                                                <i className="fa-solid fa-arrow-right"></i>
+                                            </div>
                                         </div>
 
                                         <div className="blog-content">
-                                            <p className="blog-meta">02, MAR 2025 &nbsp; | &nbsp; By Andrew johns</p>
+                                            <p className="blog-meta">02, MAR 2025 | By Andrew Johns</p>
                                             <p className="blog-desc">
-                                                As part of our mission create space for women to express their sensuality without shame fear or the patriarchal gaze ...
+                                                As part of our mission create space for women to express their sensuality...
                                             </p>
-                                            <button className="blog-btn">READ MORE</button>
+                                            <button
+                                                className="blog-btn"
+                                                onClick={() => openNews({ image: n4 })}
+                                            >
+                                                READ MORE
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -1010,15 +1109,25 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                                     <div className="blog-card">
                                         <div className="blog-img">
                                             <img src={n5} />
-                                            <div className="blog-hover-arrow"><i className="fa-solid fa-arrow-right"></i></div>
+                                            <div
+                                                className="blog-hover-arrow"
+                                                onClick={() => openNews({ image: n5 })}
+                                            >
+                                                <i className="fa-solid fa-arrow-right"></i>
+                                            </div>
                                         </div>
 
                                         <div className="blog-content">
-                                            <p className="blog-meta">02, MAR 2025 &nbsp; | &nbsp; By Andrew johns</p>
+                                            <p className="blog-meta">02, MAR 2025 | By Andrew Johns</p>
                                             <p className="blog-desc">
-                                                As part of our mission create space for women to express their sensuality without shame fear or the patriarchal gaze ...
+                                                As part of our mission create space for women to express their sensuality...
                                             </p>
-                                            <button className="blog-btn">READ MORE</button>
+                                            <button
+                                                className="blog-btn"
+                                                onClick={() => openNews({ image: n5 })}
+                                            >
+                                                READ MORE
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -1027,6 +1136,143 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
                         </div>
                     </section>
 
+                    <section className="reels-section container">
+                        <h2 className="text-center mb-5">Watch & shop reels</h2>
+
+                        <div className="position-relative">
+                            <div className="row flex-nowrap reels-wrapper">
+                                {videos.slice(startIndex, startIndex + 5).map((item, index) => (
+                                    <div className="col reels-card" key={index}>
+                                        <div className="video-box">
+                                            <video autoPlay muted loop>
+                                                <source src={item.video} type="video/mp4" />
+                                            </video>
+
+                                            <div className="overlay">
+                                                <div className="product-box">
+                                                    <img src={item.img} alt="" />
+                                                    <div>
+                                                        <p className="title">{item.title}</p>
+                                                        <p className="price">{item.price}</p>
+                                                    </div>
+                                                </div>
+
+                                                <button className="btn add-cart-btn">
+                                                    ADD TO CART
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <button
+                                className="nav-btn prev"
+                                disabled={startIndex === 0}
+                                onClick={() => setStartIndex(startIndex - 1)}
+                            >
+                                ❮
+                            </button>
+
+                            <button
+                                className="nav-btn next"
+                                disabled={startIndex + 5 >= videos.length}
+                                onClick={() => setStartIndex(startIndex + 1)}
+                            >
+                                ❯
+                            </button>
+                        </div>
+                    </section>
+
+                    <br></br><br></br><br></br>
+                    <footer className="footer-section">
+                        <div className="container">
+                            <div className="row gy-4">
+                                <div className="col-md-3">
+                                    <h4 className="footer-logo">JELWO</h4>
+                                    <p>
+                                        <i className="fa-solid fa-location-dot"></i>
+                                        &nbsp;55 East 10th street, new york,<br />
+                                        ny 10003, united states
+                                    </p>
+                                    <p>
+                                        <i className="fa-solid fa-phone"></i>
+                                        &nbsp;+ (220) 123 456 7890
+                                    </p>
+                                    <p>
+                                        <i className="fa-solid fa-envelope"></i>
+                                        &nbsp;demo123546@gmail.com
+                                    </p>
+                                </div>
+
+                                <div className="col-md-2">
+                                    <h5>Information</h5>
+                                    <ul>
+                                        <li>About us</li>
+                                        <li>Contact us</li>
+                                        <li>Faq's</li>
+                                        <li>News</li>
+                                    </ul>
+                                </div>
+
+                                <div className="col-md-2">
+                                    <h5>Privacy & terms</h5>
+                                    <ul>
+                                        <li>Privacy policy</li>
+                                        <li>Refund policy</li>
+                                        <li>Shipping & return</li>
+                                        <li>Terms & condition</li>
+                                    </ul>
+                                </div>
+
+                                <div className="col-md-2">
+                                    <h5>Category</h5>
+                                    <ul>
+                                        <li>Rings</li>
+                                        <li>Earring</li>
+                                        <li>Pendant</li>
+                                        <li>Necklaces</li>
+                                        <li>Bracelets</li>
+                                    </ul>
+                                </div>
+
+                                <div className="col-md-3">
+                                    <h5>Visit store</h5>
+                                    <p>Mon - sat : 10am - 11pm</p>
+                                    <p>Sun : 10am - 4pm</p>
+                                    <p>7 Days a week</p>
+                                </div>
+                            </div>
+
+                            <div className="row align-items-center mt-4">
+                                <div className="col-md-4 social-icons">
+                                    <i className="fa-brands fa-facebook-f"></i>
+                                    <i className="fa-brands fa-x-twitter"></i>
+                                    <i className="fa-brands fa-instagram"></i>
+                                    <i className="fa-brands fa-pinterest-p"></i>
+                                    <i className="fa-brands fa-youtube"></i>
+                                </div>
+
+                                <div className="col-md-8 subscribe-box">
+                                    <span>Subscribe and get 15% discount.</span>
+                                    <input type="email" placeholder="Enter your email" />
+                                    <button>SUBSCRIBE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+
+                    <div className="footer-bottom">
+                        <div className="container d-flex justify-content-between align-items-center">
+                            <p>Copyright © 2025 by spacingtech</p>
+                            <div className="payment-icons">
+                                <img src={visa} />
+                                <img src={mastercard} />
+                                <img src={paypal} />
+                                <img src={discover} />
+                            </div>
+                        </div>
+                    </div>
                 </>
             )}
         </>
@@ -1034,4 +1280,8 @@ function Home({ wishlist = [], toggleWishlist, openWishlist }) {
 
 }
 export default Home;
+
+
+
+
 

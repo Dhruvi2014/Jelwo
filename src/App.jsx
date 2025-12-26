@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Home from "./Home";
 import Wishlist from "./Wishlist";
+import News from "./News";
 
 function App() {
   const [page, setPage] = useState("home");
   const [wishlist, setWishlist] = useState([]);
+  const [selectedNews, setSelectedNews] = useState(null);
+
 
   const toggleWishlist = (product) => {
     setWishlist((prev) => {
@@ -23,7 +26,10 @@ function App() {
           wishlist={wishlist}
           toggleWishlist={toggleWishlist}
           openWishlist={() => setPage("wishlist")}
-        />
+          openNews={(newsData) => {
+            setSelectedNews(newsData);
+            setPage("news");
+          }} />
       )}
 
       {page === "wishlist" && (
@@ -32,9 +38,18 @@ function App() {
           goHome={() => setPage("home")}
         />
       )}
+
+      
+      {page === "news" && (
+        <News
+          news={selectedNews}             
+          goHome={() => setPage("home")}
+        />
+      )}
+
     </>
   );
 }
 
 export default App;
- 
+

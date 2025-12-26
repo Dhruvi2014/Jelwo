@@ -1,6 +1,5 @@
 import React from "react";
 import "./Style.css";
-
 import visa from "./assets/visa.png";
 import mastercard from "./assets/mastercard.png";
 import paypal from "./assets/paypal.png";
