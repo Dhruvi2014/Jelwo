@@ -23,10 +23,10 @@ const News = ({ news, goHome, onBack }) => {
                     >
                         HOME
                     </span>{" "}
-                    – CHAIN
+                    – NEWS
                 </p>
 
-                <h1>CHAIN</h1>
+                <h1>NEWS</h1>
             </div>
 
             <section className="container news-wrapper">
@@ -34,7 +34,6 @@ const News = ({ news, goHome, onBack }) => {
 
                     <div className="col-md-3 news-sidebar">
 
-                        {/* Search */}
                         <input
                             type="text"
                             className="form-control mb-4"

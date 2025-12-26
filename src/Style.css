@@ -2331,3 +2331,46 @@ blockquote {
 .nav-btn:disabled {
   opacity: 0.4;
 }
+.blog-page h2 {
+  font-family: "Playfair Display", serif;
+}
+
+.blog-card {
+  background: #fff;
+  border: none;
+}
+
+.blog-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.blog-content {
+  padding: 20px 10px;
+}
+
+.meta {
+  display: block;
+  color: #b08a6c;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.blog-content p {
+  font-size: 15px;
+  color: #555;
+}
+
+.read-more {
+  background: #b08a6c;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 14px;
+}
+
+.read-more:hover {
+  background: #9a7458;
+}

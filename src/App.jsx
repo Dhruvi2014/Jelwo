@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Home from "./Home";
 import Wishlist from "./Wishlist";
 import News from "./News";
+import Blog from "./Blog";
+
 
 function App() {
   const [page, setPage] = useState("home");
@@ -26,6 +28,7 @@ function App() {
           wishlist={wishlist}
           toggleWishlist={toggleWishlist}
           openWishlist={() => setPage("wishlist")}
+          openBlog={() => setPage("blog")}
           openNews={(newsData) => {
             setSelectedNews(newsData);
             setPage("news");
@@ -46,6 +49,9 @@ function App() {
           goHome={() => setPage("home")}
         />
       )}
+
+      {page === "blog" && <Blog goHome={() => setPage("home")} />}
+
 
     </>
   );
