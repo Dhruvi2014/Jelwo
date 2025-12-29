@@ -2441,3 +2441,71 @@ blockquote {
 .about-page img {
   max-width: 100%;
 }
+.about-stats h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.about-stats p {
+  color: #777;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.test h6{
+  margin-top: 20px;
+}
+
+.testimonial-section {
+  background: #f6f3ef;
+  padding-top: 80px;
+  position: relative;
+}
+
+.testimonial-avatar-wrapper {
+  position: absolute;
+  top: -45px;           
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.testimonial-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #fff;
+  padding: 6px;        
+  box-shadow: 0 0 15px rgba(0,0,0,0.08);
+}
+
+.testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-name {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.testimonial-arrows {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.testimonial-arrows button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
