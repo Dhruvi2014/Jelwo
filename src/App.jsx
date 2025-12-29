@@ -6,7 +6,6 @@ import Blog from "./Blog";
 import AboutUs from "./AboutUs";
 
 
-
 function App() {
   const [page, setPage] = useState("home");
   const [wishlist, setWishlist] = useState([]);
@@ -45,18 +44,17 @@ function App() {
         />
       )}
 
-      
       {page === "news" && (
         <News
-          news={selectedNews}             
+          news={selectedNews}
           goHome={() => setPage("home")}
         />
       )}
 
       {page === "blog" && <Blog goHome={() => setPage("home")} />}
-      {page === "about" && <AboutUs />}
-
-
+      {page === "about" && (
+        <AboutUs onBack={() => setPage("home")} />
+      )}
 
     </>
   );

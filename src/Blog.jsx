@@ -14,29 +14,36 @@ import visa from "./assets/visa.png";
 import mastercard from "./assets/mastercard.png";
 import paypal from "./assets/paypal.png";
 import discover from "./assets/discover.png";
+import heroBg from "./assets/jelwobg.jpeg";
 
-function Blog({ onBack }) {
+function Blog({ goHome }) {
 
     const blogSliderRef = useRef(null);
     const [blogIndex, setBlogIndex] = useState(0);
 
-
     return (
         <>
-            <div className="cart-hero">
-                <p className="breadcrumb">
-                    <span
-                        className="breadcrumb-link"
-                        onClick={onBack}
-                        style={{ cursor: "pointer" }}
-                    >
-                        HOME
-                    </span>{" "}
-                    – NEWS
-                </p>
+            <section
+                className="hero wishlist-hero"
+                style={{ backgroundImage: `url(${heroBg})` }}
+            >
+                <div className="hero-overlay"></div>
 
-                <h1>NEWS</h1>
-            </div>
+                <div className="hero-text center-text">
+                    <p className="breadcrumb">
+                        <span
+                            className="breadcrumb-link"
+                            onClick={goHome}
+
+                        >
+                            HOME
+                        </span>{" "}
+                        – WISHLIST
+                    </p>
+                    <h1>Wishlist</h1>
+                </div>
+            </section>
+
 
             <section className="blog-section">
 

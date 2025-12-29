@@ -80,17 +80,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
     };
 
 
-    // if (showCartPage) {
-    //     return (
-    //         <CartPage
-    //             cart={cart}
-    //             updateQty={updateQty}
-    //             removeItem={removeItem}
-    //             onBack={() => setShowCartPage(false)}
-    //         />
-    //     );
-    // }
-
     const addToCart = (product, color = "Gold", qty = 1) => {
         setCart((prev) => {
             const exist = prev.find(
@@ -403,7 +392,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
 
                                 <li className="dropdown has-caret">
 
-                                    <li className="dropdown has-caret">
                                         PAGES <i className="fa-solid fa-angle-down"></i>
 
                                         <div className="simple-dropdown">
@@ -428,8 +416,6 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
                                             <p>Shipping & return</p>
                                             <p>Terms & condition</p>
                                         </div>
-                                    </li>
-
                                 </li>
                             </ul>
 
