@@ -2414,3 +2414,30 @@ blockquote {
 .read-more:hover {
   background: #9a7458;
 }
+.about-page {
+  background: #fff;
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #f6f3ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  font-size: 22px;
+  color: #b08b5a;
+}
+
+.small-title {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #b08b5a;
+  text-transform: uppercase;
+}
+
+.about-page img {
+  max-width: 100%;
+}

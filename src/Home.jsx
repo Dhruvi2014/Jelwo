@@ -49,7 +49,7 @@ import mastercard from "./assets/mastercard.png";
 import paypal from "./assets/paypal.png";
 import discover from "./assets/discover.png";
 
-function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog }) {
+function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,openAbout }) {
     const [quickViewProduct, setQuickViewProduct] = useState(null);
     const [selectedColor, setSelectedColor] = useState("gold");
     const [qty, setQty] = useState(1);
@@ -413,7 +413,9 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog 
                                                 </span>
 
                                                 <div className="child-dropdown">
-                                                    <p>About Us</p>
+                                                    <p onClick={openAbout} style={{ cursor: "pointer" }}>
+                                                        About Us
+                                                    </p>
                                                     <p>About Us 2</p>
                                                 </div>
                                             </div>

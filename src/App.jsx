@@ -3,6 +3,8 @@ import Home from "./Home";
 import Wishlist from "./Wishlist";
 import News from "./News";
 import Blog from "./Blog";
+import AboutUs from "./AboutUs";
+
 
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
           toggleWishlist={toggleWishlist}
           openWishlist={() => setPage("wishlist")}
           openBlog={() => setPage("blog")}
+          openAbout={() => setPage("about")}
           openNews={(newsData) => {
             setSelectedNews(newsData);
             setPage("news");
@@ -51,6 +54,8 @@ function App() {
       )}
 
       {page === "blog" && <Blog goHome={() => setPage("home")} />}
+      {page === "about" && <AboutUs />}
+
 
 
     </>
