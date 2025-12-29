@@ -49,7 +49,7 @@ import mastercard from "./assets/mastercard.png";
 import paypal from "./assets/paypal.png";
 import discover from "./assets/discover.png";
 
-function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,openAbout }) {
+function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog, openAbout,openAbout2 }) {
     const [quickViewProduct, setQuickViewProduct] = useState(null);
     const [selectedColor, setSelectedColor] = useState("gold");
     const [qty, setQty] = useState(1);
@@ -392,30 +392,32 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
 
                                 <li className="dropdown has-caret">
 
-                                        PAGES <i className="fa-solid fa-angle-down"></i>
+                                    PAGES <i className="fa-solid fa-angle-down"></i>
 
-                                        <div className="simple-dropdown">
-                                            <div className="sub-dropdown">
-                                                <span>
-                                                    About Us <i className="fa-solid fa-angle-right"></i>
-                                                </span>
+                                    <div className="simple-dropdown">
+                                        <div className="sub-dropdown">
+                                            <span>
+                                                About Us <i className="fa-solid fa-angle-right"></i>
+                                            </span>
 
-                                                <div className="child-dropdown">
-                                                    <p onClick={openAbout} style={{ cursor: "pointer" }}>
-                                                        About Us
-                                                    </p>
-                                                    <p>About Us 2</p>
-                                                </div>
+                                            <div className="child-dropdown">
+                                                <p onClick={openAbout} style={{ cursor: "pointer" }}>
+                                                    About Us
+                                                </p>
+                                                <p onClick={openAbout2} style={{ cursor: "pointer" }}>
+                                                    About Us 2
+                                                </p>
                                             </div>
-
-                                            <p>Contact</p>
-                                            <p>Faq's</p>
-                                            <p>Privacy policy</p>
-                                            <p>Refund policy</p>
-                                            <p>Store location</p>
-                                            <p>Shipping & return</p>
-                                            <p>Terms & condition</p>
                                         </div>
+
+                                        <p>Contact</p>
+                                        <p>Faq's</p>
+                                        <p>Privacy policy</p>
+                                        <p>Refund policy</p>
+                                        <p>Store location</p>
+                                        <p>Shipping & return</p>
+                                        <p>Terms & condition</p>
+                                    </div>
                                 </li>
                             </ul>
 
@@ -1287,8 +1289,5 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
 
 }
 export default Home;
-
-
-
 
 

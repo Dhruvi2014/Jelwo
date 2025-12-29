@@ -4,6 +4,7 @@ import Wishlist from "./Wishlist";
 import News from "./News";
 import Blog from "./Blog";
 import AboutUs from "./AboutUs";
+import AboutUs2 from "./AboutUs2";
 
 
 function App() {
@@ -55,6 +56,9 @@ function App() {
       {page === "about" && (
         <AboutUs onBack={() => setPage("home")} />
       )}
+
+      {page === "about2" && <AboutUs2 onBack={() => setPage("home")} />} 
+
 
     </>
   );
