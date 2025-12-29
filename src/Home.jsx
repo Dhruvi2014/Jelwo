@@ -49,7 +49,7 @@ import mastercard from "./assets/mastercard.png";
 import paypal from "./assets/paypal.png";
 import discover from "./assets/discover.png";
 
-function Home({ wishlist = [], toggleWishlist, openWishlist, openNews,openBlog }) {
+function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog }) {
     const [quickViewProduct, setQuickViewProduct] = useState(null);
     const [selectedColor, setSelectedColor] = useState("gold");
     const [qty, setQty] = useState(1);
@@ -402,15 +402,32 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews,openBlog }
                                 </li>
 
                                 <li className="dropdown has-caret">
-                                    PAGES <i className="fa-solid fa-angle-down"></i>
 
-                                    <div className="simple-dropdown">
-                                        <p>About Us</p>
-                                        <p>Contact</p>
-                                        <p>FAQ</p>
-                                        <p>Privacy Policy</p>
-                                        <p>Refund Policy</p>
-                                    </div>
+                                    <li className="dropdown has-caret">
+                                        PAGES <i className="fa-solid fa-angle-down"></i>
+
+                                        <div className="simple-dropdown">
+                                            <div className="sub-dropdown">
+                                                <span>
+                                                    About Us <i className="fa-solid fa-angle-right"></i>
+                                                </span>
+
+                                                <div className="child-dropdown">
+                                                    <p>About Us</p>
+                                                    <p>About Us 2</p>
+                                                </div>
+                                            </div>
+
+                                            <p>Contact</p>
+                                            <p>Faq's</p>
+                                            <p>Privacy policy</p>
+                                            <p>Refund policy</p>
+                                            <p>Store location</p>
+                                            <p>Shipping & return</p>
+                                            <p>Terms & condition</p>
+                                        </div>
+                                    </li>
+
                                 </li>
                             </ul>
 
