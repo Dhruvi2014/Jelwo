@@ -5,6 +5,9 @@ import News from "./News";
 import Blog from "./Blog";
 import AboutUs from "./AboutUs";
 import AboutUs2 from "./AboutUs2";
+import ContactUs from "./Contactus";
+import ContactUs2 from "./Contactus2";
+
 
 
 function App() {
@@ -32,12 +35,14 @@ function App() {
           openWishlist={() => setPage("wishlist")}
           openBlog={() => setPage("blog")}
           openAbout={() => setPage("about")}
+          openAbout2={() => setPage("about2")}
+          openContact={() => setPage("contact")}
+          openContact2={() => setPage("contact2")}
           openNews={(newsData) => {
             setSelectedNews(newsData);
             setPage("news");
           }} />
       )}
-
       {page === "wishlist" && (
         <Wishlist
           wishlist={wishlist}
@@ -58,7 +63,8 @@ function App() {
       )}
 
       {page === "about2" && <AboutUs2 onBack={() => setPage("home")} />} 
-
+      {page === "contact" && <ContactUs onBack={() => setPage("home")} />} 
+      {page === "contact2" && <ContactUs2 onBack={() => setPage("home")} />} 
 
     </>
   );

@@ -369,7 +369,6 @@ function Blog({ goHome }) {
                             </ul>
                         </div>
 
-                        {/* PRIVACY */}
                         <div className="col-md-2">
                             <h5>Privacy & terms</h5>
                             <ul>
@@ -380,7 +379,6 @@ function Blog({ goHome }) {
                             </ul>
                         </div>
 
-                        {/* CATEGORY */}
                         <div className="col-md-2">
                             <h5>Category</h5>
                             <ul>
@@ -392,7 +390,6 @@ function Blog({ goHome }) {
                             </ul>
                         </div>
 
-                        {/* VISIT STORE */}
                         <div className="col-md-3">
                             <h5>Visit store</h5>
                             <p>Mon - sat : 10am - 11pm</p>
@@ -401,7 +398,6 @@ function Blog({ goHome }) {
                         </div>
                     </div>
 
-                    {/* SOCIAL + SUBSCRIBE */}
                     <div className="row align-items-center mt-4">
                         <div className="col-md-4 social-icons">
                             <i className="fa-brands fa-facebook-f"></i>
