@@ -3061,3 +3061,85 @@ blockquote {
   font-size: 14px;
   color: #666;
 }
+.privacy-page {
+  padding: 60px 0;
+}
+
+.privacy-page h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.privacy-page h5 {
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.privacy-page p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.7;
+}
+
+.privacy-page ul {
+  padding-left: 18px;
+}
+
+.privacy-page li {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.privacy-table th {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.privacy-table td {
+  font-size: 14px;
+  color: #666;
+}
+.refund-page {
+  padding: 60px 0;
+}
+
+.refund-page p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.refund-page h4 {
+  font-size: 16px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.refund-page ul {
+  padding-left: 18px;
+  margin-bottom: 20px;
+}
+
+.refund-page li {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.refund-page li p {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.refund-page a {
+  color: #a36b4f;
+  text-decoration: none;
+}
+
+.refund-page a:hover {
+  text-decoration: underline;
+}

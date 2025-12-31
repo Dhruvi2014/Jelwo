@@ -6,78 +6,7 @@ import mastercard from "./assets/mastercard.png";
 import paypal from "./assets/paypal.png";
 import discover from "./assets/discover.png";
 
-const Faqs = ({ onBack }) => {
-    const faqData = {
-        "Shopping Information": [
-            {
-                question: "How can I contact you?",
-                answer:
-                    "You can contact us via email or through our contact form. Our support team will respond within 24 hours."
-            },
-            {
-                question: "Do you have restock notifications?",
-                answer:
-                    "Yes! Click on the size you want and select 'Notify me when available'."
-            },
-            {
-                question: "How do I care for my items?",
-                answer:
-                    "Hand wash or gentle machine wash. Avoid bleach and direct heat."
-            },
-            {
-                question: "How do I know what size I am?",
-                answer:
-                    "Please refer to our size guide available on every product page."
-            },
-            {
-                question: "How do I use a gift card?",
-                answer:
-                    "Enter the gift card code at checkout to redeem it."
-            }
-        ],
-
-        "Returns and exchanges": [
-            {
-                question: "Can I return or exchange something in store?",
-                answer:
-                    "Yes, returns and exchanges are accepted within 7 days of delivery."
-            },
-            {
-                question: "How do I get a shipping label?",
-                answer:
-                    "Once your return request is approved, a shipping label will be emailed to you."
-            },
-            {
-                question: "What do I do if I receive a defective item?",
-                answer:
-                    "Please contact us with photos of the defect and we will arrange a replacement."
-            }
-        ],
-
-        "Payment information": [
-            {
-                question: "How much is shipping and how long will it take?",
-                answer:
-                    "Shipping charges and delivery time depend on your location."
-            },
-            {
-                question: "How long will it take to get my package?",
-                answer:
-                    "Orders are delivered within 3–7 business days."
-            }
-        ]
-
-
-
-    };
-
-
-    const [activeCategory, setActiveCategory] = useState("Shopping Information");
-    const [activeIndex, setActiveIndex] = useState(null);
-
-    const toggleFaq = (index) => {
-        setActiveIndex(activeIndex === index ? null : index);
-    };
+const Refund = ({ onBack }) => {
 
     return (
         <>
@@ -90,52 +19,100 @@ const Faqs = ({ onBack }) => {
                     >
                         HOME
                     </span>{" "}
-                    – FAQS
+                    – REFUND POLICY
                 </p>
 
-                <h1>FAQS</h1>
+                <h1>REFUND POLICY</h1>
             </div>
 
-            <div className="container faq-page">
+            <div className="container refund-page">
                 <div className="row">
-                    <div className="col-md-3 faq-sidebar">
-                        <h6 className="sidebar-title">MOST COMMON</h6>
+                    {/* LEFT COLUMN */}
+                    <div className="col-md-6">
+                        <p>
+                            We have a 30-day return policy, which means you have 30 days after
+                            receiving your item to request a return.
+                        </p>
 
-                        {Object.keys(faqData).map((category) => (
-                            <p
-                                key={category}
-                                className={`sidebar-item ${activeCategory === category ? "active" : ""
-                                    }`}
-                                onClick={() => {
-                                    setActiveCategory(category);
-                                    setActiveIndex(null);
-                                }}
-                            >
-                                {category}
-                            </p>
-                        ))}
+                        <p>
+                            The Green to Wear 2.0 standard aims to minimize the environmental
+                            impact of textile production.
+                        </p>
+
+                        <ul>
+                            <li>The Green to Wear 2.0 standard aims to minimize</li>
+                            <li>The Green to Wear 2.0 standard aims to minimize</li>
+                        </ul>
+
+                        <h4>Damages and issues</h4>
+                        <p>
+                            The Green to Wear 2.0 standard aims to minimize the environmental
+                            impact of textile production. To this end, we have developed
+                            Inditex's The List program.
+                        </p>
+
+                        <h4>Exchanges</h4>
+                        <ul>
+                            <li>
+                                <strong>Examples of personal information collected:</strong>
+                                <p>
+                                    The Green to Wear 2.0 standard aims to minimize the environmental
+                                    impact of textile production.
+                                </p>
+                            </li>
+
+                            <li>
+                                <strong>Purpose of collection:</strong>
+                                <p>
+                                    The Green to Wear 2.0 standard aims to minimize the environmental
+                                    impact of textile production.
+                                </p>
+                            </li>
+                        </ul>
                     </div>
 
-                    <div className="col-md-9">
-                        <h2 className="faq-heading">{activeCategory}</h2>
+                    {/* RIGHT COLUMN */}
+                    <div className="col-md-6">
+                        <p>
+                            You can always contact us for any return question at{" "}
+                            <a href="mailto:support@store.com">support@store.com</a>
+                        </p>
 
-                        {faqData[activeCategory].map((item, index) => (
-                            <div className="faq-item" key={index}>
-                                <div
-                                    className="faq-question"
-                                    onClick={() => toggleFaq(index)}
-                                >
-                                    <span>{item.question}</span>
-                                    <span className="icon">
-                                        {activeIndex === index ? "−" : "+"}
-                                    </span>
-                                </div>
+                        <p>
+                            The Green to Wear 2.0 standard aims to minimize the environmental
+                            impact of textile production.
+                        </p>
 
-                                {activeIndex === index && (
-                                    <div className="faq-answer">{item.answer}</div>
-                                )}
-                            </div>
-                        ))}
+                        <ul>
+                            <li>The Green to Wear 2.0 standard aims to minimize</li>
+                            <li>The Green to Wear 2.0 standard aims to minimize</li>
+                        </ul>
+
+                        <h4>Exceptions / non-returnable items</h4>
+                        <p>
+                            The Green to Wear 2.0 standard aims to minimize the environmental
+                            impact of textile production. To this end, we have developed
+                            Inditex's The List program.
+                        </p>
+
+                        <h4>Refunds</h4>
+                        <ul>
+                            <li>
+                                <strong>Examples of personal information collected:</strong>
+                                <p>
+                                    The Green to Wear 2.0 standard aims to minimize the environmental
+                                    impact of textile production.
+                                </p>
+                            </li>
+
+                            <li>
+                                <strong>Purpose of collection:</strong>
+                                <p>
+                                    The Green to Wear 2.0 standard aims to minimize the environmental
+                                    impact of textile production.
+                                </p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -229,9 +206,7 @@ const Faqs = ({ onBack }) => {
                     </div>
                 </div>
             </div>
-
-
         </>
     )
 }
-export default Faqs;
+export default Refund;

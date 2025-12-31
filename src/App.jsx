@@ -8,6 +8,9 @@ import AboutUs2 from "./AboutUs2";
 import ContactUs from "./Contactus";
 import ContactUs2 from "./Contactus2";
 import Faqs from "./Faqs";
+import Privacy from "./Privacy";
+import Refund from "./Refund";
+import Location from "./Location";
 
 
 
@@ -40,6 +43,9 @@ function App() {
           openContact={() => setPage("contact")}
           openContact2={() => setPage("contact2")}
           openFaqs={() => setPage("faqs")}
+          openPrivacy={() => setPage("privacy")}
+          openRefund={() => setPage("refund")}
+          openLocation={() => setPage("location")}
           openNews={(newsData) => {
             setSelectedNews(newsData);
             setPage("news");
@@ -68,6 +74,11 @@ function App() {
       {page === "contact" && <ContactUs onBack={() => setPage("home")} />} 
       {page === "contact2" && <ContactUs2 onBack={() => setPage("home")} />} 
       {page === "faqs" && <Faqs onBack={() => setPage("home")} />} 
+      {page === "privacy" && <Privacy onBack={() => setPage("home")} />}
+      {page === "refund" && <Refund onBack={() => setPage("home")} />}
+      {page === "location" && <Location onBack={() => setPage("home")} />}
+      
+      
     </>
   );
 }

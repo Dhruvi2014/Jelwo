@@ -6,78 +6,7 @@ import mastercard from "./assets/mastercard.png";
 import paypal from "./assets/paypal.png";
 import discover from "./assets/discover.png";
 
-const Faqs = ({ onBack }) => {
-    const faqData = {
-        "Shopping Information": [
-            {
-                question: "How can I contact you?",
-                answer:
-                    "You can contact us via email or through our contact form. Our support team will respond within 24 hours."
-            },
-            {
-                question: "Do you have restock notifications?",
-                answer:
-                    "Yes! Click on the size you want and select 'Notify me when available'."
-            },
-            {
-                question: "How do I care for my items?",
-                answer:
-                    "Hand wash or gentle machine wash. Avoid bleach and direct heat."
-            },
-            {
-                question: "How do I know what size I am?",
-                answer:
-                    "Please refer to our size guide available on every product page."
-            },
-            {
-                question: "How do I use a gift card?",
-                answer:
-                    "Enter the gift card code at checkout to redeem it."
-            }
-        ],
-
-        "Returns and exchanges": [
-            {
-                question: "Can I return or exchange something in store?",
-                answer:
-                    "Yes, returns and exchanges are accepted within 7 days of delivery."
-            },
-            {
-                question: "How do I get a shipping label?",
-                answer:
-                    "Once your return request is approved, a shipping label will be emailed to you."
-            },
-            {
-                question: "What do I do if I receive a defective item?",
-                answer:
-                    "Please contact us with photos of the defect and we will arrange a replacement."
-            }
-        ],
-
-        "Payment information": [
-            {
-                question: "How much is shipping and how long will it take?",
-                answer:
-                    "Shipping charges and delivery time depend on your location."
-            },
-            {
-                question: "How long will it take to get my package?",
-                answer:
-                    "Orders are delivered within 3–7 business days."
-            }
-        ]
-
-
-
-    };
-
-
-    const [activeCategory, setActiveCategory] = useState("Shopping Information");
-    const [activeIndex, setActiveIndex] = useState(null);
-
-    const toggleFaq = (index) => {
-        setActiveIndex(activeIndex === index ? null : index);
-    };
+const Privacy = ({ onBack }) => {
 
     return (
         <>
@@ -90,52 +19,115 @@ const Faqs = ({ onBack }) => {
                     >
                         HOME
                     </span>{" "}
-                    – FAQS
+                    – PRIVACY POLICY
                 </p>
 
-                <h1>FAQS</h1>
+                <h1>PRIVACY POLICY</h1>
             </div>
 
-            <div className="container faq-page">
+            <div className="container privacy-page">
                 <div className="row">
-                    <div className="col-md-3 faq-sidebar">
-                        <h6 className="sidebar-title">MOST COMMON</h6>
+                    <div className="col-md-6">
+                        <h2>Collecting personal information</h2>
+                        <p>
+                            When you visit the Site, we collect certain information about your
+                            device, your interaction with the Site, and information necessary
+                            to process your purchases.
+                        </p>
 
-                        {Object.keys(faqData).map((category) => (
-                            <p
-                                key={category}
-                                className={`sidebar-item ${activeCategory === category ? "active" : ""
-                                    }`}
-                                onClick={() => {
-                                    setActiveCategory(category);
-                                    setActiveIndex(null);
-                                }}
-                            >
-                                {category}
-                            </p>
-                        ))}
+                        <h5>Device information</h5>
+                        <ul>
+                            <li>
+                                <strong>Examples of personal information collected:</strong>{" "}
+                                Browser version, IP address.
+                            </li>
+                            <li>
+                                <strong>Purpose of collection:</strong> To load the Site
+                                accurately.
+                            </li>
+                            <li>
+                                <strong>Source of collection:</strong> Collected automatically.
+                            </li>
+                        </ul>
+
+                        <h5>Order information</h5>
+                        <ul>
+                            <li>
+                                <strong>Examples:</strong> Name, billing address, payment details.
+                            </li>
+                            <li>
+                                <strong>Purpose:</strong> To fulfill orders and provide customer
+                                support.
+                            </li>
+                        </ul>
+
+                        <h5>Customer support information</h5>
+                        <p>
+                            We collect information provided when contacting customer support.
+                        </p>
+
+                        <h2>Your rights</h2>
+                        <p>
+                            You have the right to access personal information we hold about you
+                            and request corrections or deletion.
+                        </p>
                     </div>
 
-                    <div className="col-md-9">
-                        <h2 className="faq-heading">{activeCategory}</h2>
+                    <div className="col-md-6">
+                        <h2>Sharing personal information</h2>
+                        <p>
+                            We share your personal information with service providers to help
+                            us provide our services.
+                        </p>
 
-                        {faqData[activeCategory].map((item, index) => (
-                            <div className="faq-item" key={index}>
-                                <div
-                                    className="faq-question"
-                                    onClick={() => toggleFaq(index)}
-                                >
-                                    <span>{item.question}</span>
-                                    <span className="icon">
-                                        {activeIndex === index ? "−" : "+"}
-                                    </span>
-                                </div>
+                        <h5>Behavioural advertising</h5>
+                        <p>
+                            We use your personal information to provide targeted
+                            advertisements.
+                        </p>
 
-                                {activeIndex === index && (
-                                    <div className="faq-answer">{item.answer}</div>
-                                )}
-                            </div>
-                        ))}
+                        <h2>Selling personal information</h2>
+                        <p>
+                            We do not sell your personal information as defined by applicable
+                            laws.
+                        </p>
+
+                        <h2>Cookies</h2>
+                        <p>
+                            Cookies are small data files placed on your device to enhance your
+                            browsing experience.
+                        </p>
+
+                        <h5>Cookies necessary for the functioning of the store</h5>
+
+                        <table className="table privacy-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Function</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>_secure</td>
+                                    <td>Used for secure checkout</td>
+                                </tr>
+                                <tr>
+                                    <td>cart_st</td>
+                                    <td>Stores cart information</td>
+                                </tr>
+                                <tr>
+                                    <td>_shopify_u</td>
+                                    <td>Stores customer account info</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h2>Changes</h2>
+                        <p>
+                            We may update this Privacy Policy from time to time to reflect
+                            changes in our practices.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -229,9 +221,8 @@ const Faqs = ({ onBack }) => {
                     </div>
                 </div>
             </div>
-
-
         </>
     )
 }
-export default Faqs;
+
+export default Privacy;
