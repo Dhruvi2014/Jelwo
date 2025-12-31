@@ -3143,3 +3143,41 @@ blockquote {
 .refund-page a:hover {
   text-decoration: underline;
 }
+.store-text h2 {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    font-family: serif;
+}
+
+.info {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.info i {
+    font-size: 18px;
+    color: #000;
+    margin-top: 4px;
+}
+
+.info h6 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    letter-spacing: 1px;
+}
+
+.info p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+.store-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
