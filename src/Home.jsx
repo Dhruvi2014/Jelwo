@@ -49,7 +49,7 @@ import mastercard from "./assets/mastercard.png";
 import paypal from "./assets/paypal.png";
 import discover from "./assets/discover.png";
 
-function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog, openAbout, openAbout2,openContact,openContact2 }) {
+function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog, openAbout, openAbout2,openContact,openContact2,openFaqs }) {
     const [quickViewProduct, setQuickViewProduct] = useState(null);
     const [selectedColor, setSelectedColor] = useState("gold");
     const [qty, setQty] = useState(1);
@@ -424,7 +424,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
                                             </div>
                                         </div>
 
-                                        <p>Faq's</p>
+                                        <p onClick={openFaqs} style={{cursor:"pointer"}}>Faq's</p>
                                         <p>Privacy policy</p>
                                         <p>Refund policy</p>
                                         <p>Store location</p>

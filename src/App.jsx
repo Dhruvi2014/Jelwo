@@ -7,6 +7,7 @@ import AboutUs from "./AboutUs";
 import AboutUs2 from "./AboutUs2";
 import ContactUs from "./Contactus";
 import ContactUs2 from "./Contactus2";
+import Faqs from "./Faqs";
 
 
 
@@ -38,6 +39,7 @@ function App() {
           openAbout2={() => setPage("about2")}
           openContact={() => setPage("contact")}
           openContact2={() => setPage("contact2")}
+          openFaqs={() => setPage("faqs")}
           openNews={(newsData) => {
             setSelectedNews(newsData);
             setPage("news");
@@ -65,7 +67,7 @@ function App() {
       {page === "about2" && <AboutUs2 onBack={() => setPage("home")} />} 
       {page === "contact" && <ContactUs onBack={() => setPage("home")} />} 
       {page === "contact2" && <ContactUs2 onBack={() => setPage("home")} />} 
-
+      {page === "faqs" && <Faqs onBack={() => setPage("home")} />} 
     </>
   );
 }
