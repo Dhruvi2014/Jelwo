@@ -12,6 +12,7 @@ import Privacy from "./Privacy";
 import Refund from "./Refund";
 import Location from "./Location";
 import Shipping from "./Shipping";
+import Terms from "./Terms";
 
 
 
@@ -48,6 +49,7 @@ function App() {
           openRefund={() => setPage("refund")}
           openLocation={() => setPage("location")}
           openShipping={() => setPage("shipping")}
+          openTerms={() => setPage("terms")}
           openNews={(newsData) => {
             setSelectedNews(newsData);
             setPage("news");
@@ -80,8 +82,7 @@ function App() {
       {page === "refund" && <Refund onBack={() => setPage("home")} />}
       {page === "location" && <Location onBack={() => setPage("home")} />}
       {page === "shipping" && <Shipping onBack={() => setPage("home")} />}
-      
-      
+      {page === "terms" && <Terms onBack={() => setPage("home")} />}
     </>
   );
 }

@@ -6,8 +6,7 @@ import mastercard from "./assets/mastercard.png";
 import paypal from "./assets/paypal.png";
 import discover from "./assets/discover.png";
 
-
-const Shipping = ({ onBack }) => {
+const Terms = ({ onBack }) => {
 
     return (
         <>
@@ -20,36 +19,30 @@ const Shipping = ({ onBack }) => {
                     >
                         HOME
                     </span>{" "}
-                    – Shipping & Return
+                    – Terms & Conditions
                 </p>
 
-                <h1>Shipping & Return</h1>
+                <h1>Terms & Conditions</h1>
             </div>
 
-            <section className="delivery-section">
+
+            <section className="terms-section">
                 <div className="container">
                     <div className="row gy-5">
 
                         {/* LEFT COLUMN */}
                         <div className="col-md-6">
-                            <div className="policy-block">
-                                <h3>RETURNS</h3>
+                            <div className="terms-block">
+                                <h3>TERM & CONDITION OVERVIEW</h3>
                                 <p>
                                     The Green to Wear 2.0 standard aims to minimize the environmental
                                     impact of textile production. To this end, we have developed
                                     Inditex’s The List program.
                                 </p>
-
-                                <ul>
-                                    <li>The Green to Wear 2.0 standard aims to minimize</li>
-                                    <li>The Green to Wear 2.0 standard aims to minimize</li>
-                                    <li>The Green to Wear 2.0 standard aims to minimize</li>
-                                    <li>To this end, we have developed Inditex’s The List program.</li>
-                                </ul>
                             </div>
 
-                            <div className="policy-block mt-5">
-                                <h3>EXCHANGES</h3>
+                            <div className="terms-block">
+                                <h3>ONLINE STORE TERMS</h3>
                                 <p>
                                     The Green to Wear 2.0 standard aims to minimize the environmental
                                     impact of textile production.
@@ -59,64 +52,86 @@ const Shipping = ({ onBack }) => {
                                     impact of textile production. To this end, we have developed
                                     Inditex’s The List program.
                                 </p>
+                            </div>
 
-                                <ul>
-                                    <li>
-                                        <strong>
-                                            We only replace items if they are defective or damaged:
-                                        </strong>
-                                        <br />
-                                        The Green to Wear 2.0 standard aims to minimize the
-                                        environmental impact of textile production.
-                                    </li>
-                                </ul>
+                            <div className="terms-block">
+                                <h3>COMPLETENESS AND TIMELINESS OF INFORMATION</h3>
+                                <p>
+                                    The Green to Wear 2.0 standard aims to minimize the environmental
+                                    impact of textile production. To this end, we have developed
+                                    Inditex’s The List program.
+                                </p>
+                                <p>
+                                    The Green to Wear 2.0 standard aims to minimize the environmental
+                                    impact of textile production. To this end, we have developed
+                                    Inditex’s The List program.
+                                </p>
+                            </div>
+
+                            <div className="terms-block">
+                                <h3>PRODUCTS OR SERVICES (IF APPLICABLE)</h3>
+                                <p>
+                                    The Green to Wear 2.0 standard aims to minimize the environmental
+                                    impact of textile production.
+                                </p>
                             </div>
                         </div>
 
                         {/* RIGHT COLUMN */}
                         <div className="col-md-6">
-                            <div className="policy-block">
-                                <h3>REFUNDS</h3>
+                            <div className="terms-block">
+                                <h3 className="updated">
+                                    LAST UPDATED: <span>MARCH 25, 2023</span>
+                                </h3>
                                 <p>
                                     The Green to Wear 2.0 standard aims to minimize the environmental
                                     impact of textile production. To this end, we have developed
                                     Inditex’s The List program.
                                 </p>
-
-                                <ul>
-                                    <li>The Green to Wear 2.0 standard aims to minimize</li>
-                                    <li>To this end, we have developed Inditex’s The List program.</li>
-                                    <li>The Green to Wear 2.0 standard aims to minimize</li>
-                                    <li>To this end, we have developed Inditex’s The List program.</li>
-                                </ul>
                             </div>
 
-                            <div className="policy-block mt-5">
-                                <h3>SHIPPING</h3>
+                            <div className="terms-block">
+                                <h3>GENERAL CONDITIONS</h3>
                                 <p>
                                     The Green to Wear 2.0 standard aims to minimize the environmental
-                                    impact of textile production.
+                                    impact of textile production. To this end, we have developed
+                                    Inditex’s The List program.
                                 </p>
                                 <p>
                                     The Green to Wear 2.0 standard aims to minimize the environmental
                                     impact of textile production. To this end, we have developed
                                     Inditex’s The List program.
                                 </p>
+                            </div>
 
-                                <ul>
-                                    <li>
-                                        <strong>To return your product:</strong>
-                                        <br />
-                                        The Green to Wear 2.0 standard aims to minimize the
-                                        environmental impact of textile production.
-                                    </li>
-                                </ul>
+                            <div className="terms-block">
+                                <h3>MODIFICATIONS TO THE SERVICE AND PRICES</h3>
+                                <p>
+                                    The Green to Wear 2.0 standard aims to minimize the environmental
+                                    impact of textile production. To this end, we have developed
+                                    Inditex’s The List program.
+                                </p>
+                                <p>
+                                    The Green to Wear 2.0 standard aims to minimize the environmental
+                                    impact of textile production. To this end, we have developed
+                                    Inditex’s The List program.
+                                </p>
+                            </div>
+
+                            <div className="terms-block">
+                                <h3>ACCURACY OF BILLING AND ACCOUNT INFORMATION</h3>
+                                <p>
+                                    The Green to Wear 2.0 standard aims to minimize the environmental
+                                    impact of textile production. To this end, we have developed
+                                    Inditex’s The List program.
+                                </p>
                             </div>
                         </div>
 
                     </div>
                 </div>
             </section>
+
 
             <footer className="footer-section">
                 <div className="container">
@@ -207,7 +222,9 @@ const Shipping = ({ onBack }) => {
                     </div>
                 </div>
             </div>
+
         </>
     )
 }
-export default Shipping;
+
+export default Terms;

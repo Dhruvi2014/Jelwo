@@ -3181,3 +3181,72 @@ blockquote {
     height: auto;
     object-fit: cover;
 }
+.delivery-section {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.policy-block h3 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.policy-block p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.policy-block ul {
+  padding-left: 18px;
+  margin-top: 15px;
+}
+
+.policy-block ul li {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.policy-block ul li strong {
+  font-weight: 600;
+  color: #000;
+}
+.terms-section {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.terms-block {
+  margin-bottom: 45px;
+}
+
+.terms-block h3 {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.terms-block h3.updated {
+  display: flex;
+  gap: 6px;
+}
+
+.terms-block h3.updated span {
+  font-weight: 600;
+}
+
+.terms-block p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 14px;
+}
