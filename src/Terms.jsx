@@ -30,7 +30,6 @@ const Terms = ({ onBack }) => {
                 <div className="container">
                     <div className="row gy-5">
 
-                        {/* LEFT COLUMN */}
                         <div className="col-md-6">
                             <div className="terms-block">
                                 <h3>TERM & CONDITION OVERVIEW</h3>
@@ -77,7 +76,6 @@ const Terms = ({ onBack }) => {
                             </div>
                         </div>
 
-                        {/* RIGHT COLUMN */}
                         <div className="col-md-6">
                             <div className="terms-block">
                                 <h3 className="updated">
