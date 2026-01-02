@@ -48,7 +48,7 @@ function Wishlist({ wishlist, goHome }) {
                   )}
 
                   <div className="img-wrap">
-                    <img src={item.image} alt={item.name} />
+                    <img src={item.image[0]} alt={item.name} />
 
                     <div className="hover-overlay">
                       <button>

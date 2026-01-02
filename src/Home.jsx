@@ -6,6 +6,11 @@ import Collection from "./Collection";
 
 import "./Style.css";
 import Logo from "./assets/logo.png";
+
+import hero1 from "./assets/bg.png";
+import hero2 from "./assets/bg2.webp";
+import hero3 from "./assets/bg3.webp";
+
 import heroBg from "./assets/bg.png";
 import sinceLogo from "./assets/since.png";
 import shopImg from "./assets/shop.webp";
@@ -49,7 +54,7 @@ import mastercard from "./assets/mastercard.png";
 import paypal from "./assets/paypal.png";
 import discover from "./assets/discover.png";
 
-function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog, openAbout, openAbout2,openContact,openContact2,openFaqs,openPrivacy,openRefund,openLocation,openShipping,openTerms}) {
+function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog, openAbout, openAbout2, openContact, openContact2, openFaqs, openPrivacy, openRefund, openLocation, openShipping, openTerms }) {
     const [quickViewProduct, setQuickViewProduct] = useState(null);
     const [selectedColor, setSelectedColor] = useState("gold");
     const [qty, setQty] = useState(1);
@@ -147,6 +152,30 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
     ];
 
     const [startIndex, setStartIndex] = useState(0);
+    const slides = [
+        {
+            bg: hero1,
+            title: "Jewelry made\nwith love",
+        },
+        {
+            bg: hero2,
+            title: "Elegance is\nour obsession",
+        },
+        {
+            bg: hero3,
+            title: "Jewelry is our\npassion",
+        },
+    ];
+    const [current, setCurrent] = useState(0);
+
+    const nextSlide = () => {
+        setCurrent((prev) => (prev + 1) % slides.length);
+    };
+
+    const prevSlide = () => {
+        setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+    };
+
 
 
     useEffect(() => {
@@ -424,12 +453,12 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
                                             </div>
                                         </div>
 
-                                        <p onClick={openFaqs} style={{cursor:"pointer"}}>Faq's</p>
-                                        <p onClick={openPrivacy} style={{cursor:"pointer"}}>Privacy policy</p>
-                                        <p onClick={openRefund} style={{cursor:"pointer"}}>Refund policy</p>
-                                        <p onClick={openLocation} style={{cursor:"pointer"}}>Store location</p>
-                                        <p onClick={openShipping} style={{cursor:"pointer"}}>Shipping & return</p>
-                                        <p onClick={openTerms} style={{cursor:"pointer"}}>Terms & condition</p>
+                                        <p onClick={openFaqs} style={{ cursor: "pointer" }}>Faq's</p>
+                                        <p onClick={openPrivacy} style={{ cursor: "pointer" }}>Privacy policy</p>
+                                        <p onClick={openRefund} style={{ cursor: "pointer" }}>Refund policy</p>
+                                        <p onClick={openLocation} style={{ cursor: "pointer" }}>Store location</p>
+                                        <p onClick={openShipping} style={{ cursor: "pointer" }}>Shipping & return</p>
+                                        <p onClick={openTerms} style={{ cursor: "pointer" }}>Terms & condition</p>
                                     </div>
                                 </li>
                             </ul>
@@ -442,23 +471,28 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
                     <br></br>
                     <section
                         className="hero"
-                        style={{ backgroundImage: `url(${heroBg})` }}
+                        style={{ backgroundImage: `url(${slides[current].bg})` }}
                     >
-                        <div className="slider-arrow left">
+                        <div className="slider-arrow left" onClick={prevSlide}>
                             <i className="fa-solid fa-angle-left"></i>
                         </div>
 
-                        <div className="slider-arrow right">
+                        <div className="slider-arrow right" onClick={nextSlide}>
                             <i className="fa-solid fa-angle-right"></i>
                         </div>
 
                         <img src={sinceLogo} alt="Since 1991" className="since-logo" />
 
                         <div className="hero-text">
-                            <br></br><br></br><br></br>
                             <h1>
-                                Jewelry is our <br /> passion
+                                {slides[current].title.split("\n").map((line, i) => (
+                                    <span key={i}>
+                                        {line}
+                                        <br />
+                                    </span>
+                                ))}
                             </h1>
+
                             <button>SHOP NOW</button>
                         </div>
                     </section>
@@ -1299,8 +1333,8 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
             )}
         </>
     );
-
 }
+
 export default Home;
 
 
