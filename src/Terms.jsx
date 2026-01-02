@@ -123,7 +123,7 @@ const Terms = ({ onBack }) => {
                                     impact of textile production. To this end, we have developed
                                     Inditex’s The List program.
                                 </p>
-                            </div>
+                            </div> 
                         </div>
 
                     </div>
@@ -226,3 +226,5 @@ const Terms = ({ onBack }) => {
 }
 
 export default Terms;
+
+
