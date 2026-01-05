@@ -64,6 +64,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
     const [openCart, setOpenCart] = useState(false);
     const [showCartPage, setShowCartPage] = useState(false);
     const [showCollection, setShowCollection] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const [timeLeft, setTimeLeft] = useState({
         days: 1,
@@ -259,6 +260,25 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
                 />
             ) : (
                 <>
+                    {/* MOBILE HEADER (ONLY FOR RESPONSIVE) */}
+<div className="mobile-top-bar">
+  <i
+    className="fa-solid fa-bars"
+    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+  ></i>
+
+  <img src={Logo} alt="logo" className="mobile-logo" />
+
+  <div className="mobile-right">
+    <i className="fa-solid fa-headset"></i>
+    <i
+      className="fa-solid fa-bag-shopping"
+      onClick={() => setOpenCart(true)}
+    ></i>
+  </div>
+</div>
+
+
                     <div className="top-bar">
                         <div className="container d-flex justify-content-between align-items-center">
                             <div className="logo">
@@ -295,6 +315,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
                         </div>
                     </div>
                     <br></br>
+                <div className={`nav-wrapper ${mobileMenuOpen ? "open" : ""}`}>
 
                     <div className="nav-bar">
                         <div className="container d-flex justify-content-between align-items-center">
@@ -468,6 +489,8 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
                             </div>
                         </div>
                     </div>
+                </div>
+                
                     <br></br>
                     <section
                         className="hero"
