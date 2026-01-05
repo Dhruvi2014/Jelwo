@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -18,3 +19,6 @@ If you are developing a production application, we recommend using TypeScript wi
 =======
 # Jelwo
 >>>>>>> 9063adcc991ff39f8a8b4c9b0d433b03c5df3f42
+=======
+# MERN_Jelwo
+>>>>>>> 285c238d506568701f0b36de3a919a1bf6a1a0ed

@@ -65,6 +65,8 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
     const [showCartPage, setShowCartPage] = useState(false);
     const [showCollection, setShowCollection] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [activeMenu, setActiveMenu] = useState(null);
+
 
     const [timeLeft, setTimeLeft] = useState({
         days: 1,
@@ -176,6 +178,7 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
     const prevSlide = () => {
         setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
     };
+
 
 
 
@@ -313,179 +316,231 @@ function Home({ wishlist = [], toggleWishlist, openWishlist, openNews, openBlog,
                             </div>
                         </div>
                     </div>
+
+                    {mobileMenuOpen && (
+                        <div className="mobile-overlay" onClick={() => setMobileMenuOpen(false)} />
+                    )}
+
+
+                    <div className={`mobile-drawer ${mobileMenuOpen ? "open" : ""}`}>
+
+                        <div className="drawer-header">
+                            <span>MENU</span>
+                            <i
+                                className="fa-solid fa-xmark"
+                                onClick={() => setMobileMenuOpen(false)}
+                            ></i>
+                        </div>
+
+                        <ul className="drawer-menu">
+
+                            <li onClick={() => setMobileMenuOpen(false)}>HOME</li>
+
+                            <li onClick={() => setActiveMenu(activeMenu === "shop" ? null : "shop")}>
+                                SHOP <span>+</span>
+                            </li>
+                            <div className={`drawer-accordion ${activeMenu === "shop" ? "show" : ""}`}>
+                                <p>Rings</p>
+                                <p>Earrings</p>
+                                <p>Necklace</p>
+                            </div>
+
+                            <li onClick={() => setActiveMenu(activeMenu === "products" ? null : "products")}>
+                                PRODUCTS <span>+</span>
+                            </li>
+                            <div className={`drawer-accordion ${activeMenu === "products" ? "show" : ""}`}>
+                                <p>Gold</p>
+                                <p>Silver</p>
+                                <p>Diamond</p>
+                            </div>
+
+                            <li onClick={openBlog}>BLOG</li>
+
+                            <li onClick={() => setActiveMenu(activeMenu === "pages" ? null : "pages")}>
+                                PAGES <span>+</span>
+                            </li>
+
+                            <div className={`drawer-accordion ${activeMenu === "pages" ? "show" : ""}`}>
+                                <p onClick={openAbout}>About Us</p>
+                                <p onClick={openContact}>Contact Us</p>
+                                <p onClick={openFaqs}>FAQ</p>
+                            </div>
+
+                        </ul>
+                    </div>
+
+
                     <br></br>
-                    <div className={`nav-wrapper ${mobileMenuOpen ? "open" : ""}`}>
 
-                        <div className="nav-bar">
-                            <div className="container d-flex justify-content-between align-items-center">
-                                <div className="phone">
-                                    <i className="fa-solid fa-headset"></i> (220) 123 456 7890
-                                </div>
+                    <div className="nav-bar desktop-nav">
+                        <div className="container d-flex justify-content-between align-items-center">
+                            <div className="phone">
+                                <i className="fa-solid fa-headset"></i> (220) 123 456 7890
+                            </div>
 
-                                <ul className="menu">
-                                    <li className="has-caret">
-                                        HOME <i className="fa-solid fa-angle-down"></i>
-                                    </li>
+                            <ul className="menu">
+                                <li className="has-caret">
+                                    HOME <i className="fa-solid fa-angle-down"></i>
+                                </li>
 
-                                    <li className="dropdown has-caret">
-                                        SHOP <i className="fa-solid fa-angle-down"></i>
+                                <li className="dropdown has-caret">
+                                    SHOP <i className="fa-solid fa-angle-down"></i>
 
-                                        <div className="mega-dropdown">
-                                            <div className="row">
-                                                <div className="col">
-                                                    <h5>Earrings</h5>
-                                                    <p>Diamond ring</p>
-                                                    <p>Gold bangle</p>
-                                                    <p>Stud earrings</p>
-                                                    <p>Floral Gol</p>
-                                                    <p>Stud earrings</p>
-                                                    <p>Stud earrings</p>
+                                    <div className="mega-dropdown">
+                                        <div className="row">
+                                            <div className="col">
+                                                <h5>Earrings</h5>
+                                                <p>Diamond ring</p>
+                                                <p>Gold bangle</p>
+                                                <p>Stud earrings</p>
+                                                <p>Floral Gol</p>
+                                                <p>Stud earrings</p>
+                                                <p>Stud earrings</p>
 
-                                                </div>
+                                            </div>
 
-                                                <div className="col">
-                                                    <h5>Necklace</h5>
-                                                    <p>Rose gold rings</p>
-                                                    <p>Simple pearl</p>
-                                                    <p>Classic chain</p>
-                                                    <p>Floral Gold</p>
-                                                    <p>Classic chain</p>
-                                                    <p>Simple Pearl</p>
+                                            <div className="col">
+                                                <h5>Necklace</h5>
+                                                <p>Rose gold rings</p>
+                                                <p>Simple pearl</p>
+                                                <p>Classic chain</p>
+                                                <p>Floral Gold</p>
+                                                <p>Classic chain</p>
+                                                <p>Simple Pearl</p>
 
-                                                </div>
+                                            </div>
 
-                                                <div className="col">
-                                                    <h5>Rings</h5>
-                                                    <p>Engagement rings</p>
-                                                    <p>Wedding bands</p>
-                                                    <p>Designer rings</p>
-                                                    <p>Rose Gold Ring</p>
-                                                    <p>Gold rose pin</p>
-                                                    <p>Designer rings</p>
+                                            <div className="col">
+                                                <h5>Rings</h5>
+                                                <p>Engagement rings</p>
+                                                <p>Wedding bands</p>
+                                                <p>Designer rings</p>
+                                                <p>Rose Gold Ring</p>
+                                                <p>Gold rose pin</p>
+                                                <p>Designer rings</p>
 
-                                                </div>
+                                            </div>
 
-                                                <div className="col">
-                                                    <h5>Bracelets</h5>
-                                                    <p>Engagement rings</p>
-                                                    <p>Wedding bands</p>
-                                                    <p>Designer rings</p>
-                                                    <p>Designer rings</p>
-                                                    <p>Designer rings</p>
-                                                    <p>Designer rings</p>
+                                            <div className="col">
+                                                <h5>Bracelets</h5>
+                                                <p>Engagement rings</p>
+                                                <p>Wedding bands</p>
+                                                <p>Designer rings</p>
+                                                <p>Designer rings</p>
+                                                <p>Designer rings</p>
+                                                <p>Designer rings</p>
 
-                                                </div>
+                                            </div>
 
-                                                <div className="col image-col">
-                                                    <img src={shopImg} alt="Shop" />
-                                                </div>
+                                            <div className="col image-col">
+                                                <img src={shopImg} alt="Shop" />
                                             </div>
                                         </div>
-                                    </li>
+                                    </div>
+                                </li>
 
-                                    <li className="dropdown has-caret">
-                                        PRODUCTS <i className="fa-solid fa-angle-down"></i>
-                                        <div className="mega-dropdown">
-                                            <div className="row">
-                                                <div className="col">
-                                                    <h5>Earrings</h5>
-                                                    <p>Diamond ring</p>
-                                                    <p>Gold bangle</p>
-                                                    <p>Stud earrings</p>
-                                                    <p>Floral Gol</p>
-                                                    <p>Stud earrings</p>
-                                                    <p>Stud earrings</p>
+                                <li className="dropdown has-caret">
+                                    PRODUCTS <i className="fa-solid fa-angle-down"></i>
+                                    <div className="mega-dropdown">
+                                        <div className="row">
+                                            <div className="col">
+                                                <h5>Earrings</h5>
+                                                <p>Diamond ring</p>
+                                                <p>Gold bangle</p>
+                                                <p>Stud earrings</p>
+                                                <p>Floral Gol</p>
+                                                <p>Stud earrings</p>
+                                                <p>Stud earrings</p>
 
-                                                </div>
+                                            </div>
 
-                                                <div className="col">
-                                                    <h5>Necklace</h5>
-                                                    <p>Rose gold rings</p>
-                                                    <p>Simple pearl</p>
-                                                    <p>Classic chain</p>
-                                                    <p>Floral Gold</p>
-                                                    <p>Classic chain</p>
-                                                    <p>Simple Pearl</p>
+                                            <div className="col">
+                                                <h5>Necklace</h5>
+                                                <p>Rose gold rings</p>
+                                                <p>Simple pearl</p>
+                                                <p>Classic chain</p>
+                                                <p>Floral Gold</p>
+                                                <p>Classic chain</p>
+                                                <p>Simple Pearl</p>
 
-                                                </div>
+                                            </div>
 
-                                                <div className="col">
-                                                    <h5>Rings</h5>
-                                                    <p>Engagement rings</p>
-                                                    <p>Wedding bands</p>
-                                                    <p>Designer rings</p>
-                                                    <p>Rose Gold Ring</p>
-                                                    <p>Gold rose pin</p>
-                                                    <p>Designer rings</p>
+                                            <div className="col">
+                                                <h5>Rings</h5>
+                                                <p>Engagement rings</p>
+                                                <p>Wedding bands</p>
+                                                <p>Designer rings</p>
+                                                <p>Rose Gold Ring</p>
+                                                <p>Gold rose pin</p>
+                                                <p>Designer rings</p>
 
-                                                </div>
+                                            </div>
 
-                                                <div className="col">
-                                                    <h5>Bracelets</h5>
-                                                    <p>Engagement rings</p>
-                                                    <p>Wedding bands</p>
-                                                    <p>Designer rings</p>
-                                                    <p>Designer rings</p>
-                                                    <p>Designer rings</p>
-                                                    <p>Designer rings</p>
+                                            <div className="col">
+                                                <h5>Bracelets</h5>
+                                                <p>Engagement rings</p>
+                                                <p>Wedding bands</p>
+                                                <p>Designer rings</p>
+                                                <p>Designer rings</p>
+                                                <p>Designer rings</p>
+                                                <p>Designer rings</p>
 
-                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+
+                                <li onClick={openBlog} style={{ cursor: "pointer" }}>
+                                    BLOG
+                                </li>
+
+                                <li className="dropdown has-caret">
+
+                                    PAGES <i className="fa-solid fa-angle-down"></i>
+
+                                    <div className="simple-dropdown">
+                                        <div className="sub-dropdown">
+                                            <span>
+                                                About Us <i className="fa-solid fa-angle-right"></i>
+                                            </span>
+
+                                            <div className="child-dropdown">
+                                                <p onClick={openAbout} style={{ cursor: "pointer" }}>
+                                                    About Us
+                                                </p>
+                                                <p onClick={openAbout2} style={{ cursor: "pointer" }}>
+                                                    About Us 2
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="sub-dropdown">
+                                            <span>
+                                                Contact Us <i className="fa-solid fa-angle-right"></i>
+                                            </span>
+
+                                            <div className="child-dropdown">
+                                                <p onClick={openContact} style={{ cursor: "pointer" }}>
+                                                    Contact Us
+                                                </p>
+                                                <p onClick={openContact2} style={{ cursor: "pointer" }}>
+                                                    Contact Us 2
+                                                </p>
                                             </div>
                                         </div>
 
-                                    </li>
+                                        <p onClick={openFaqs} style={{ cursor: "pointer" }}>Faq's</p>
+                                        <p onClick={openPrivacy} style={{ cursor: "pointer" }}>Privacy policy</p>
+                                        <p onClick={openRefund} style={{ cursor: "pointer" }}>Refund policy</p>
+                                        <p onClick={openLocation} style={{ cursor: "pointer" }}>Store location</p>
+                                        <p onClick={openShipping} style={{ cursor: "pointer" }}>Shipping & return</p>
+                                        <p onClick={openTerms} style={{ cursor: "pointer" }}>Terms & condition</p>
+                                    </div>
+                                </li>
+                            </ul>
 
-                                    <li onClick={openBlog} style={{ cursor: "pointer" }}>
-                                        BLOG
-                                    </li>
-
-                                    <li className="dropdown has-caret">
-
-                                        PAGES <i className="fa-solid fa-angle-down"></i>
-
-                                        <div className="simple-dropdown">
-                                            <div className="sub-dropdown">
-                                                <span>
-                                                    About Us <i className="fa-solid fa-angle-right"></i>
-                                                </span>
-
-                                                <div className="child-dropdown">
-                                                    <p onClick={openAbout} style={{ cursor: "pointer" }}>
-                                                        About Us
-                                                    </p>
-                                                    <p onClick={openAbout2} style={{ cursor: "pointer" }}>
-                                                        About Us 2
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="sub-dropdown">
-                                                <span>
-                                                    Contact Us <i className="fa-solid fa-angle-right"></i>
-                                                </span>
-
-                                                <div className="child-dropdown">
-                                                    <p onClick={openContact} style={{ cursor: "pointer" }}>
-                                                        Contact Us
-                                                    </p>
-                                                    <p onClick={openContact2} style={{ cursor: "pointer" }}>
-                                                        Contact Us 2
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <p onClick={openFaqs} style={{ cursor: "pointer" }}>Faq's</p>
-                                            <p onClick={openPrivacy} style={{ cursor: "pointer" }}>Privacy policy</p>
-                                            <p onClick={openRefund} style={{ cursor: "pointer" }}>Refund policy</p>
-                                            <p onClick={openLocation} style={{ cursor: "pointer" }}>Store location</p>
-                                            <p onClick={openShipping} style={{ cursor: "pointer" }}>Shipping & return</p>
-                                            <p onClick={openTerms} style={{ cursor: "pointer" }}>Terms & condition</p>
-                                        </div>
-                                    </li>
-                                </ul>
-
-                                <div className="try-home">
-                                    <i className="fa-solid fa-house"></i> FREE TRY AT HOME
-                                </div>
+                            <div className="try-home">
+                                <i className="fa-solid fa-house"></i> FREE TRY AT HOME
                             </div>
                         </div>
                     </div>
