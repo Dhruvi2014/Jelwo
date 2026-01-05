@@ -204,12 +204,10 @@ body {
 }
 @media (max-width: 991px) {
 
-  /* Hide desktop top bar */
   .top-bar {
     display: none;
   }
 
-  /* Show mobile header */
   .mobile-top-bar {
     display: flex;
     align-items: center;
@@ -233,23 +231,19 @@ body {
     gap: 15px;
   }
 
-  /* Hide nav by default */
   .nav-wrapper {
     display: none;
   }
 
-  /* Show nav when hamburger clicked */
   .nav-wrapper.open {
     display: block;
   }
 
-  /* Stack menu vertically */
   .menu {
     flex-direction: column;
     gap: 15px;
   }
 
-  /* Dropdowns behave correctly */
   .mega-dropdown,
   .simple-dropdown {
     position: static;
